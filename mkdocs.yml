@@ -8,33 +8,38 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue
-      accent: blue
+      primary: indigo
+      accent: pink
       toggle:
         icon: material/brightness-7
         name: 切换到暗色模式
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: blue
-      accent: blue
+      primary: indigo
+      accent: pink
       toggle:
         icon: material/brightness-4
         name: 切换到亮色模式
   features:
-    - navigation.tabs           # 顶部标签导航
-    - navigation.sections       # 侧边栏分组
-    - navigation.expand         # 自动展开侧边栏
-    - navigation.top            # 回到顶部按钮
-    - search.suggest            # 搜索建议
-    - search.highlight          # 搜索结果高亮
-    - content.code.copy         # 代码块复制按钮
-    - content.code.annotate     # 代码注解
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    logo: material/laptop-code
+
+extra:
+  generator: false
 
 plugins:
   - search
   - blog:
-      authors: true               # 启用作者功能（布尔值）
-      authors_file: authors.yml   # 从外部文件加载作者列表
+      authors: true
+      authors_file: authors.yml
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -45,6 +50,13 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python.name:material.extensions.emoji.to_svg
 
 nav:
   - 首页: index.md
