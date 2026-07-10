@@ -13,3 +13,4 @@ hide:
 ## 最近更新
 
 - [搭建日志站点](blog/posts/2026-06-16-hello.md)
+- [网站更名](blog/posts/2026-06-24-name.md)
