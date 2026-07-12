@@ -30,7 +30,10 @@ extra_css:                       # ← 新增：加载首页样式
 
 plugins:
   - search
-  - blog
+  - blog:
+      blog_dir: blog
+  - blog:
+      blog_dir: project
 
 markdown_extensions:
   - pymdownx.highlight:
