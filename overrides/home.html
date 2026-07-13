@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 <!--
-  自定义首页模板：在导航栏下方插入一个 Hero 横幅。
-  只需要改下面 <h1>、<p> 和两个按钮的文字 / 链接即可。
+  自定义首页模板：在导航栏下方插入一个 Hero 横幅，
+  并在页面内容下方自动生成"最近更新"文章列表。
 -->
 
 {% block tabs %}
@@ -31,4 +31,33 @@
       </div>
     </div>
   </section>
+{% endblock %}
+
+<!--
+  覆盖 content 块：先渲染 index.md 的 Markdown 内容，
+  然后自动从所有页面中筛选带 date 元数据的文章，按日期倒序展示前 5 篇。
+-->
+{% block content %}
+  {{ super() }}
+
+  {% set ns = namespace(posts=[]) %}
+  {% for file in pages %}
+    {% if file.page and file.page.meta and file.page.meta.date %}
+      {% set ns.posts = ns.posts + [file.page] %}
+    {% endif %}
+  {% endfor %}
+
+  {% if ns.posts | length %}
+  <h2>最近更新</h2>
+  <ul>
+    {% for post in ns.posts | sort(attribute='meta.date', reverse=true) %}
+      {% if loop.index <= 5 %}
+      <li>
+        <a href="{{ post.url | url }}">{{ post.title }}</a>
+        — {{ post.meta.date }}
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
 {% endblock %}

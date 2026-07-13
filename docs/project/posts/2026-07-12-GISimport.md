@@ -6,6 +6,8 @@ categories:
 tags:
   - projects
   - GIS
+  - histmap
+  - workflow
 ---
 
 # GIS 数据导入
