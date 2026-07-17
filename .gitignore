@@ -11,4 +11,5 @@ MkDocs-Material-学习笔记.md
 
 # 图片素材
 pics/
-docs/**/pics/
+docs/project/**/pics/
+docs/blog/**/pics/
