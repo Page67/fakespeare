@@ -21,11 +21,11 @@ tags:
 
 作者在项目开发中途先手写了一版规则，然后让AI结合26年初很有名的Andrej Karpathy给出的AI编程建议对该规则进行修改完善。AI第一次为我生成了3个全局规则文件和6个项目规则文件……考虑到规则文件是Agent要频繁默认读取的，沟通后最终形成3个全局规则和2个项目规则文件。
 
-![和柴鸡的对话1](image-5.png)
-![和柴鸡的对话2-Karpathy](image-8.png)
-![柴鸡GLRules建议](image-6.png)
-![柴鸡PJRules建议](image-7.png)
-![和柴鸡的对话3-简化规则文件](image-9.png)
+![和柴鸡的对话1](pics/2026-07-10-glrulerewrite/image-1.png)
+![和柴鸡的对话2-Karpathy](pics/2026-07-10-glrulerewrite/image-4.png)
+![柴鸡GLRules建议](pics/2026-07-10-glrulerewrite/image-2.png)
+![柴鸡PJRules建议](pics/2026-07-10-glrulerewrite/image-3.png)
+![和柴鸡的对话3-简化规则文件](pics/2026-07-10-glrulerewrite/image-5.png)
 
 3. 存疑
 
