@@ -1,0 +1,925 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="编程项目记录与技术分享">
+      
+      
+        <meta name="author" content="uki">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>项目细部 - 无限猴子打字机</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="无限猴子打字机" class="md-header__button md-logo" aria-label="无限猴子打字机" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            无限猴子打字机
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              项目细部
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  工作日志
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  项目讲解
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="无限猴子打字机" class="md-nav__button md-logo" aria-label="无限猴子打字机" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    无限猴子打字机
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工作日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目讲解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="_1">项目细部<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-07-13 00:00:00+00:00">2026年7月13日</time></li>
+        
+          <li class="md-meta__item">
+            分类于
+            
+              <a href="./" class="md-meta__link">项目细部</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              需要 1 分钟阅读时间
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="_1"><a class="toclink" href="../../2026/07/13/%E6%B8%AF%E6%BE%B3%E5%8F%B0%E5%8E%86%E5%8F%B2%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E5%9C%B0%E5%9B%BE/">台湾历史文化遗产数据</a></h2>
+<h3 id="_2"><a class="toclink" href="../../2026/07/13/%E6%B8%AF%E6%BE%B3%E5%8F%B0%E5%8E%86%E5%8F%B2%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E5%9C%B0%E5%9B%BE/#_2">数据获取</a></h3>
+<p>使用Agent（注：cursor）网络爬取台湾省历史文化遗产相关页面上的数据并根据地理位置信息生成对应坐标，输出.csv表格和.geojson文件。</p>
+<p><img alt="cursor爬取页面" src="pics/2026-07-13-HKMCTW/image-2.png" /></p>
+<h3 id="_3"><a class="toclink" href="../../2026/07/13/%E6%B8%AF%E6%BE%B3%E5%8F%B0%E5%8E%86%E5%8F%B2%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E5%9C%B0%E5%9B%BE/#_3">存在问题</a></h3>
+<p><img alt="台湾遗产点初始信息预览" src="pics/2026-07-13-HKMCTW/image-1.png" /></p>
+<p>对初始生成的文件进行预览，发现可能存在以下问题：</p>
+<ul>
+<li>坐标生成有误</li>
+<li>遗产点有重复</li>
+<li>信息缺失或信息有误</li>
+<li>和官方行政边界存在差异</li>
+<li>分类标准不一致</li>
+<li>其他问题</li>
+</ul>
+<h3 id="_4"><a class="toclink" href="../../2026/07/13/%E6%B8%AF%E6%BE%B3%E5%8F%B0%E5%8E%86%E5%8F%B2%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E5%9C%B0%E5%9B%BE/#_4">处理说明</a></h3>
+<p>由于项目仍处于第一版状态，临近发布，目前也没有合适的官方资料作为参考，此次仅对行政边界和一些明显错误进行处理。简单的数据对齐原则在项目发布时会给予简略说明。</p>
+<h2 id="_5"><a class="toclink" href="../../2026/07/13/%E6%B8%AF%E6%BE%B3%E5%8F%B0%E5%8E%86%E5%8F%B2%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E5%9C%B0%E5%9B%BE/#_5">香港历史文化遗产数据</a></h2>
+<ol>
+<li>数据来源</li>
+</ol>
+<p>https://www.amo.gov.hk/tc/historic-buildings/monuments/index.html </p>
+<p><img alt="香港古迹官网" src="pics/2026-07-13-HKMCTW/image-3.png" /></p>
+<ol>
+<li>处理说明</li>
+</ol>
+<p>简单的数据对齐原则在项目发布时会给予简略说明。</p>
+<h2 id="_6"><a class="toclink" href="../../2026/07/13/%E6%B8%AF%E6%BE%B3%E5%8F%B0%E5%8E%86%E5%8F%B2%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E5%9C%B0%E5%9B%BE/#_6">澳门历史文化遗产数据</a></h2>
+<ol>
+<li>数据来源</li>
+</ol>
+<p>https://www.culturalheritage.mo/</p>
+<p><img alt="澳门文化遗产官网" src="pics/2026-07-13-HKMCTW/image-4.png" /></p>
+<ol>
+<li>处理说明</li>
+</ol>
+<p>简单的数据对齐原则在项目发布时会给予简略说明。</p>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-07-11 00:00:00+00:00">2026年7月11日</time></li>
+        
+          <li class="md-meta__item">
+            分类于
+            
+              <a href="./" class="md-meta__link">项目细部</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              需要 2 分钟阅读时间
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="_1"><a class="toclink" href="../../2026/07/11/%E5%AE%98%E6%96%B9%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8E%BF%E8%A1%8C%E6%94%BF%E8%BE%B9%E7%95%8C%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E5%A4%84%E7%90%86/">天地图——国家标准矢量地图的获取和处理</a></h2>
+<p>由于我国对地图类出版物的审查较为（粗糙的）严格，本次开发的历史地图线上项目所涉及的行政边界需采用官方发布的数据，即：天地图。</p>
+<h3 id="_2"><a class="toclink" href="../../2026/07/11/%E5%AE%98%E6%96%B9%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8E%BF%E8%A1%8C%E6%94%BF%E8%BE%B9%E7%95%8C%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E5%A4%84%E7%90%86/#_2">数据获取</a></h3>
+<ol>
+<li>网站</li>
+</ol>
+<p>https://www.tianditu.gov.cn/ 国家地理信息公共服务平台</p>
+<p><img alt="天地图官网" src="pics/2026-07-11-bndry/image-1.png" /></p>
+<ol>
+<li>路径</li>
+</ol>
+<p>天地图主页注册账号 → 进入数据共享中心 → 选择“行政区划可视化”板块 → 下载数据</p>
+<p><img alt="数据中心页面" src="pics/2026-07-11-bndry/image-2.png" /></p>
+<p><img alt="行政边界GeoJSON下载页面" src="pics/2026-07-11-bndry/image-3.png" /></p>
+<ol>
+<li>数据基础信息</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">属性</th>
+<th>信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">审图号</td>
+<td>GS(2024)0605号</td>
+</tr>
+<tr>
+<td style="text-align: center;">下载格式</td>
+<td>GeoJSON</td>
+</tr>
+<tr>
+<td style="text-align: center;">数据更新时间</td>
+<td>2025年9月</td>
+</tr>
+<tr>
+<td style="text-align: center;">坐标系</td>
+<td>CGCS2000 (EPSG:4490)</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>数据属性表</li>
+</ol>
+<p><img alt="属性表" src="pics/2026-07-11-bndry/image-5.png" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">属性名</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">name</td>
+<td>名称</td>
+<td>“河南省”；“梅州市”；“鄂城区”</td>
+</tr>
+<tr>
+<td style="text-align: center;">gb</td>
+<td>行政区划编码</td>
+<td>156410000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3"><a class="toclink" href="../../2026/07/11/%E5%AE%98%E6%96%B9%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8E%BF%E8%A1%8C%E6%94%BF%E8%BE%B9%E7%95%8C%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E5%A4%84%E7%90%86/#_3">检查处理</a></h3>
+<ul>
+<li>检查拓扑gap和overlap两项，仍然存在零星小问题，但不影响工作，懒得处理了。</li>
+</ul>
+<p><img alt="拓扑检查窗口" src="pics/2026-07-11-bndry/image-4.png" /></p>
+<ul>
+<li>有些飞地我不清楚是错误还是本就如此。不做处理。</li>
+</ul>
+<h3 id="_4"><a class="toclink" href="../../2026/07/11/%E5%AE%98%E6%96%B9%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8E%BF%E8%A1%8C%E6%94%BF%E8%BE%B9%E7%95%8C%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E5%A4%84%E7%90%86/#_4">吐槽</a></h3>
+<ul>
+<li>边界最后的近似处理可以说是比较丑了</li>
+<li>没有基础图形外的其他属性字段，和用爱发电的一众自制边界博主比较显得就很贫乏了。不过对官方要求能达到 ==<strong>准确、及时、方便地提供开放下载</strong>== 大家就已经知足了。不然无据可依。——“你说我不行，整天各种理由卡我，那你倒是拿出个行的啊。”</li>
+</ul>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-07-10 00:00:00+00:00">2026年7月10日</time></li>
+        
+          <li class="md-meta__item">
+            分类于
+            
+              <a href="./" class="md-meta__link">项目细部</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              需要 2 分钟阅读时间
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="agent-global-rules"><a class="toclink" href="../../2026/07/10/glrule-%E6%94%B9%E5%86%99/">Agent Global Rules 改写</a></h2>
+<h3 id="_1"><a class="toclink" href="../../2026/07/10/glrule-%E6%94%B9%E5%86%99/#_1">前情提要</a></h3>
+<ol>
+<li>背景</li>
+</ol>
+<p>使用Agent辅助编程进行项目开发时，撰写 Global Rules（全局规则） 和 Project Rules（项目规则） 供给AI参考，可以更有效地推进项目顺利进行。</p>
+<ol>
+<li>初次交流</li>
+</ol>
+<p>作者在项目开发中途先手写了一版规则，然后让AI结合26年初很有名的Andrej Karpathy给出的AI编程建议对该规则进行修改完善。AI第一次为我生成了3个全局规则文件和6个项目规则文件……考虑到规则文件是Agent要频繁默认读取的，沟通后最终形成3个全局规则和2个项目规则文件。</p>
+<p><img alt="和柴鸡的对话1" src="pics/2026-07-10-glrulerewrite/image-1.png" />
+<img alt="和柴鸡的对话2-Karpathy" src="pics/2026-07-10-glrulerewrite/image-4.png" />
+<img alt="柴鸡GLRules建议" src="pics/2026-07-10-glrulerewrite/image-2.png" />
+<img alt="柴鸡PJRules建议" src="pics/2026-07-10-glrulerewrite/image-3.png" />
+<img alt="和柴鸡的对话3-简化规则文件" src="pics/2026-07-10-glrulerewrite/image-5.png" /></p>
+<ol>
+<li>存疑</li>
+</ol>
+<p>经过一段时间的开发后，尤其是观察Agent的具体思考过程后，作者发现若干问题，比如：</p>
+<ul>
+<li>重复做Plan</li>
+<li>Rule里有一些属于Skills、workflow或其他具体操作范畴的内容</li>
+<li>长期会遗忘</li>
+<li>3个全局规则文件稍显冗余</li>
+</ul>
+<p>遂改之。</p>
+<h3 id="_2"><a class="toclink" href="../../2026/07/10/glrule-%E6%94%B9%E5%86%99/#_2">改写结果</a></h3>
+<p>改写后变为一个文件7条规则。重点包括：</p>
+<ul>
+<li>英文操作，中文回答。</li>
+<li>Clarify before implementation.</li>
+<li>Plan -&gt; Act -&gt; Verify 工作节奏</li>
+<li>未经允许不要随意更改文件和系统设置</li>
+<li>多Agent不要同时修改同一个文件夹/文件。</li>
+</ul>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-07-09 00:00:00+00:00">2026年7月9日</time></li>
+        
+          <li class="md-meta__item">
+            分类于
+            
+              <a href="./" class="md-meta__link">项目细部</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              需要 1 分钟阅读时间
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="_1"><a class="toclink" href="../../2026/07/09/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B%E7%9A%84%E7%AE%80%E4%BB%8B/">项目简介</a></h2>
+<h3 id="_2"><a class="toclink" href="../../2026/07/09/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B%E7%9A%84%E7%AE%80%E4%BB%8B/#_2">主要内容</a></h3>
+<p>中国历史文化遗产线上地图项目。<strong>开源。数据集开放下载。</strong></p>
+<h3 id="_3"><a class="toclink" href="../../2026/07/09/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B%E7%9A%84%E7%AE%80%E4%BB%8B/#_3">时间线</a></h3>
+<ul>
+<li>项目创建时间（以首个 commit 为准）：2026-03-30 10:06:14 +0800</li>
+<li>首个 commit：b1a49a7 | Page67 | init: project structure</li>
+<li>经历了v0.1尝试版、v0.2更新版到目前v1.0第一版</li>
+<li>目前处于v1.0第一版最后收尾阶段</li>
+</ul>
+<h3 id="_4"><a class="toclink" href="../../2026/07/09/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B%E7%9A%84%E7%AE%80%E4%BB%8B/#_4">工作方式</a></h3>
+<ul>
+<li>AI辅助编程（因为作者编程水平只有Python101入门级别）</li>
+<li>平均每天两小时</li>
+</ul>
+<h3 id="agent"><a class="toclink" href="../../2026/07/09/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B%E7%9A%84%E7%AE%80%E4%BB%8B/#agent">Agent 选取</a></h3>
+<p>作为第一个项目，选择<strong>Cline</strong>这个经典的VSCode内置型Agent。</p>
+<h3 id="_5"><a class="toclink" href="../../2026/07/09/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B%E7%9A%84%E7%AE%80%E4%BB%8B/#_5">技术栈</a></h3>
+<table>
+<thead>
+<tr>
+<th>技术领域</th>
+<th style="text-align: right;">项目是否涉及</th>
+<th style="text-align: right;">覆盖程度</th>
+<th style="text-align: center;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前端 Web</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>TypeScript / JS 工程</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">中高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>互动地图</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>GIS 桌面处理</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>空间数据格式</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>空间数据库</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">中高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>后端 API</td>
+<td style="text-align: right;">已开始/规划</td>
+<td style="text-align: right;">中</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>地图服务 / OGC</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">中高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>云存储 / 静态资产</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">中高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>服务器部署</td>
+<td style="text-align: right;">已开始</td>
+<td style="text-align: right;">中</td>
+<td style="text-align: center;">仍需进一步学习</td>
+</tr>
+<tr>
+<td>Git / 版本管理</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">中</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>Python 数据脚本</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">中高</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>AI agent 开发流</td>
+<td style="text-align: right;">已涉及</td>
+<td style="text-align: right;">中</td>
+<td style="text-align: center;">√</td>
+</tr>
+<tr>
+<td>==测试体系==</td>
+<td style="text-align: right;">较少</td>
+<td style="text-align: right;">低</td>
+<td style="text-align: center;">中后期</td>
+</tr>
+<tr>
+<td><strong>CI/CD</strong>(Continuous Integration &amp; Continuous Delivery/Deployment)</td>
+<td style="text-align: right;">基本未涉及</td>
+<td style="text-align: right;">低</td>
+<td style="text-align: center;">后期&amp;正式发布前</td>
+</tr>
+<tr>
+<td><strong>权限 / 用户系统</strong></td>
+<td style="text-align: right;">基本未涉及</td>
+<td style="text-align: right;">低</td>
+<td style="text-align: center;">最后测试功能和v2.0版本</td>
+</tr>
+<tr>
+<td><em>可观测性 / 日志监控</em></td>
+<td style="text-align: right;">基本未涉及</td>
+<td style="text-align: right;">低</td>
+<td style="text-align: center;">网站正式运行后会有轻微接触</td>
+</tr>
+<tr>
+<td><strong>容器化 / Docker</strong></td>
+<td style="text-align: right;">准备/了解中</td>
+<td style="text-align: right;">低到中</td>
+<td style="text-align: center;">中后期</td>
+</tr>
+<tr>
+<td>~~Kubernetes / 大规模运维~~</td>
+<td style="text-align: right;">未涉及</td>
+<td style="text-align: right;">无</td>
+<td style="text-align: center;"><strong>老六阶段唯一不需要真正接触的功能</strong></td>
+</tr>
+<tr>
+<td><strong>移动端 App</strong></td>
+<td style="text-align: right;">未涉及</td>
+<td style="text-align: right;">无</td>
+<td style="text-align: center;">项目2解决</td>
+</tr>
+<tr>
+<td><strong>桌面端 App</strong></td>
+<td style="text-align: right;">未涉及</td>
+<td style="text-align: right;">无</td>
+<td style="text-align: center;">项目2解决</td>
+</tr>
+<tr>
+<td>==游戏 / 3D 引擎==</td>
+<td style="text-align: right;">未涉及</td>
+<td style="text-align: right;">无</td>
+<td style="text-align: center;">项目6、项目5解决</td>
+</tr>
+<tr>
+<td>==机器学习训练平台==</td>
+<td style="text-align: right;">未正式涉及</td>
+<td style="text-align: right;">低</td>
+<td style="text-align: center;">老六的open tail，新项目的预热</td>
+</tr>
+</tbody>
+</table>
+    
+    
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  
+</nav>
+        
+      
+    </div>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

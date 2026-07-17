@@ -1,0 +1,80 @@
+/* ===========================================================
+   首页 Hero 横幅样式
+   =========================================================== */
+
+.cl-hero {
+  /* 默认：蓝色渐变背景（贴合你的 primary: blue 主题） */
+  background: linear-gradient(135deg, #2a6df4 0%, #4d8bff 55%, #7aa9ff 100%);
+
+  /* ⭐ 想要图2那种「整张大背景插画」时：
+     1) 把一张图片放到 docs/assets/hero.png
+     2) 注释掉上面那行 background，启用下面这行 */
+  /* background: url("../assets/hero.png") center / cover no-repeat; */
+
+  color: #fff;
+  margin-top: -0.4rem;          /* 让横幅紧贴上方导航栏，不留缝 */
+}
+
+.cl-hero__inner {
+  padding: 5rem 1rem 6rem;      /* 横幅高度，想更高就调大第二个数值 */
+  display: flex;
+}
+
+.cl-hero__content {
+  max-width: 42rem;             /* 文案区宽度，居中可改成 margin:0 auto + text-align:center */
+}
+
+.cl-hero__content h1 {
+  color: #fff;
+  font-weight: 800;
+  font-size: 2.6rem;
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+.cl-hero__content p {
+  font-size: 1.05rem;
+  opacity: 0.92;
+  margin: 0 0 2rem;
+}
+
+/* ---------- 按钮 ---------- */
+.cl-hero .md-button {
+  margin: 0.4rem 0.6rem 0 0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+/* 主按钮：白底 + 主题色字 */
+.cl-hero .md-button--primary {
+  background: #fff;
+  color: #2a6df4;
+  border-color: #fff;
+}
+.cl-hero .md-button--primary:hover {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.88);
+  color: #2a6df4;
+}
+
+/* 次按钮：透明描边 */
+.cl-hero .md-button:not(.md-button--primary) {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.75);
+}
+.cl-hero .md-button:not(.md-button--primary):hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* ---------- 暗色模式：换一套更深的蓝 ---------- */
+[data-md-color-scheme="slate"] .cl-hero {
+  background: linear-gradient(135deg, #143a72 0%, #1f4f9c 55%, #2c63bf 100%);
+}
+
+/* ---------- 手机端缩小字号 ---------- */
+@media screen and (max-width: 600px) {
+  .cl-hero__inner { padding: 3rem 1rem 3.5rem; }
+  .cl-hero__content h1 { font-size: 1.9rem; }
+}
