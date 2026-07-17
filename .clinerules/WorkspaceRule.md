@@ -22,39 +22,8 @@ MkDocs 工作日志站点：`mkdocs.yml` → `docs/` → `overrides/home.html`�
 
 ---
 
-## 2. 新建博文
-
-创建新 `.md` 时，同时：
-
-1. 在 `docs/blog/posts/` 或 `docs/project/posts/` 下创建文件。
-2. 在对应 `posts/pics/` 下创建 `<博文文件名>/` 子文件夹（即使无图）。
-3. 添加标准 frontmatter：
-
-```yaml
----
-title: 标题
-date: YYYY-MM-DD
-categories:
-  - 项目细部
-tags:
-  - projects
----
-```
-
----
-
-## 3. Git 提交
+## 2. Git 提交
 
 - 修改后检查 `git status`，确认只含预期变更。
-- 使用 `git add` 和 `git commit` 提交。
-- **用户未明确说推送时，不要执行 `git push`。**
-- 用户要求推送时，使用 `git push origin HEAD`。
+- **用户未明确提出时，不要执行  `git add` `git commit` `git push`。**
 
----
-
-## 4. 通用纪律
-
-- 中文回答，英文代码/文件名/命令。
-- 非平凡任务遵循 Plan → Act → Verify。
-- 只改与任务相关的文件和行。
-- 提交前检查 `git status`，避免误删图片或构建产物。
