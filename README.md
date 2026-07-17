@@ -41,7 +41,96 @@ MkDocs/
 │   └── home.html               # 自定义首页模板
 │
 └── pics/                       # 截图素材
+    └── <post-name>/            # 每篇博文对应的图片子文件夹
+        └── image-N.png         # 按出现顺序编号
 ```
+
+## 图片管理规范
+
+本项目博文中的图片采用**按博文隔离、按出现顺序编号**的管理方式。
+
+### 存储位置
+
+每篇博文用到的图片存放在该博文同目录下的 `pics/<博文文件名>/` 子文件夹中：
+
+```
+docs/project/posts/
+├── 2026-07-13-HKMCTW.md
+└── pics/
+    └── 2026-07-13-HKMCTW/
+        ├── image-1.png
+        ├── image-2.png
+        └── image-3.png
+```
+
+- `<博文文件名>` 指 `.md` 文件的完整名称（不含扩展名）。
+- **禁止**将图片直接放在 `posts/` 根目录下。
+- 没有图片的博文，其对应子文件夹可以留空，但仍建议预先创建。
+
+### 命名规则
+
+图片按 Markdown 文件中的**出现顺序**重新编号：
+
+```
+image-1.png
+image-2.png
+image-3.png
+...
+```
+
+- 编号从 `1` 开始，连续递增。
+- 每个子文件夹内的编号独立计算。
+- 不保留原始文件名中的数字或描述信息。
+
+### Markdown 引用路径
+
+博文中引用图片时，必须使用相对路径：
+
+```markdown
+![说明文字](pics/<博文文件名>/image-N.png)
+```
+
+例如：
+
+```markdown
+![香港古迹官网](pics/2026-07-13-HKMCTW/image-3.png)
+```
+
+## 新建博文快捷命令
+
+在 PowerShell 中，可以使用以下命令快速创建一篇新博文及其对应的图片子文件夹：
+
+```powershell
+# 配置
+$section = "project"        # 或 "blog"
+$date = Get-Date -Format "yyyy-MM-dd"
+$name = "my-new-post"       # 博文文件名（不含日期）
+$title = "我的新博文"        # 博文标题
+
+# 创建文件和文件夹
+$mdPath = "docs/$section/posts/$date-$name.md"
+$picDir = "docs/$section/posts/pics/$date-$name"
+
+New-Item -ItemType File -Path $mdPath -Force | Out-Null
+New-Item -ItemType Directory -Path $picDir -Force | Out-Null
+
+# 写入 frontmatter
+@"
+---
+title: $title
+date: $date
+categories:
+  - 项目细部
+tags:
+  - projects
+---
+"@ | Set-Content -Path $mdPath -Encoding UTF8
+
+Write-Host "已创建: $mdPath"
+Write-Host "已创建: $picDir"
+```
+
+> 提示：Cline 的 Workspace Rules 已配置为在添加图片时自动创建子文件夹、按顺序编号并更新 Markdown 引用路径。
 
 ## 当前配置状态
 
