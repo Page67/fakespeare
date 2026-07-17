@@ -8,3 +8,7 @@ _tmp_*.html
 # 说明文件
 README.md
 MkDocs-Material-学习笔记.md
+
+# 图片素材
+pics/
+docs/**/pics/
