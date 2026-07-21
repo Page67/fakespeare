@@ -1,6 +1,7 @@
 {#-
   覆盖 Material 内置 blog.html：
   - 左侧边栏替换为日志名单：页面标题 + 简介（index.md 正文）+ 按年份分组的日志链接
+  - 右侧保留一个空的目录（TOC）侧栏占位，使正文宽度与文章页一致，不顶到边缘
   - 主区域不再渲染页头，直接列出日志摘要
 -#}
 {% extends "main.html" %}
@@ -32,6 +33,11 @@
           </ul>
         </nav>
       </div>
+    </div>
+  </div>
+  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner"></div>
     </div>
   </div>
 {% endblock %}

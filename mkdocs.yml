@@ -44,5 +44,5 @@ markdown_extensions:
 
 nav:
   - 首页: index.md
-  - 工作日志: blog/index.md
+  - 日常记录: blog/index.md
   - 项目讲解: project/index.md

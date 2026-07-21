@@ -192,21 +192,38 @@
   padding: 0.6rem 0.6rem 0.2rem;
   list-style: none;
 }
+/* 名单条目：标题前加小提示符，方便区分 */
+.cl-post-list .md-nav__link::before {
+  content: "›";
+  margin-right: 0.3rem;
+  color: var(--md-default-fg-color--light);
+}
 
 /* ===========================================================
    日志列表：条目之间的分割线
    =========================================================== */
-.md-post--excerpt + .md-post--excerpt {
+/* 分割线用伪元素绘制，比条目内容宽 2rem，避免和文字尾端齐平 */
+.md-post--excerpt + .md-post--excerpt::before {
+  content: "";
+  display: block;
+  width: calc(100% + 2rem);
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  padding-top: 2rem;
+  margin-bottom: 2rem;
 }
-[data-md-color-scheme="slate"] .md-post--excerpt + .md-post--excerpt {
+[data-md-color-scheme="slate"] .md-post--excerpt + .md-post--excerpt::before {
   border-top-color: rgba(255, 255, 255, 0.25);
 }
 
 /* 摘要底部（按钮）与下方分割线的间距：默认 3.2rem 偏大，收小一点 */
 .md-post--excerpt {
   margin-bottom: 2.2rem;
+}
+
+/* 「阅读全文」按钮：比默认 md-button 稍小一圈，字号小 2px、不加粗 */
+.md-post__action .cl-readmore {
+  padding: 0.3em 1.2em;
+  font-size: 0.7rem;                /* 正文 0.8rem 小 2px */
+  font-weight: 400;
 }
 
 /* 摘要被截断时的省略号：单独一行居中，加大加粗，颜色同「阅读全文」按钮 */
@@ -280,6 +297,16 @@
 .md-post--excerpt:nth-of-type(18n+16) .md-post__content h2::before { content: "🥝"; }
 .md-post--excerpt:nth-of-type(18n+17) .md-post__content h2::before { content: "🥥"; }
 .md-post--excerpt:nth-of-type(18n+18) .md-post__content h2::before { content: "🥑"; }
+
+/* ===========================================================
+   标题字体：思源黑体（Noto Sans SC，本机已装可变字体版）
+   未安装的访客回落到原字体栈
+   =========================================================== */
+.md-typeset :is(h1, h2, h3, h4, h5, h6) {
+  font-family: "Noto Sans SC", "Source Han Sans SC", "Source Han Sans CN", "思源黑体",
+    Roboto, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
 
 /* ---------- 手机端缩小字号 ---------- */
 @media screen and (max-width: 600px) {
