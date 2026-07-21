@@ -3,15 +3,12 @@
    =========================================================== */
 
 .cl-hero {
-  /* 默认：蓝色渐变背景（贴合你的 primary: blue 主题） */
-  background: linear-gradient(135deg, #2a6df4 0%, #4d8bff 55%, #7aa9ff 100%);
+  /* 白板起步：无背景色/无渐变 */
+  background: transparent;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
-  /* ⭐ 想要图2那种「整张大背景插画」时：
-     1) 把一张图片放到 docs/assets/hero.png
-     2) 注释掉上面那行 background，启用下面这行 */
-  /* background: url("../assets/hero.png") center / cover no-repeat; */
-
-  color: #fff;
+  color: #333;
   margin-top: -0.4rem;          /* 让横幅紧贴上方导航栏，不留缝 */
 }
 
@@ -25,7 +22,7 @@
 }
 
 .cl-hero__content h1 {
-  color: #fff;
+  color: #222;
   font-weight: 800;
   font-size: 2.6rem;
   line-height: 1.25;
@@ -45,33 +42,244 @@
   transition: all 0.2s ease;
 }
 
-/* 主按钮：白底 + 主题色字 */
+/* 主按钮：深色底 + 白字 */
 .cl-hero .md-button--primary {
-  background: #fff;
-  color: #2a6df4;
-  border-color: #fff;
+  background: #222;
+  color: #fff;
+  border-color: #222;
 }
 .cl-hero .md-button--primary:hover {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(255, 255, 255, 0.88);
-  color: #2a6df4;
+  background: #444;
+  border-color: #444;
+  color: #fff;
 }
 
 /* 次按钮：透明描边 */
 .cl-hero .md-button:not(.md-button--primary) {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.75);
+  color: #222;
+  border-color: rgba(34, 34, 34, 0.6);
 }
 .cl-hero .md-button:not(.md-button--primary):hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #fff;
-  color: #fff;
+  background: rgba(34, 34, 34, 0.08);
+  border-color: #222;
+  color: #222;
 }
 
-/* ---------- 暗色模式：换一套更深的蓝 ---------- */
+/* ---------- 暗色模式：保持透明背景，反转文字颜色 ---------- */
 [data-md-color-scheme="slate"] .cl-hero {
-  background: linear-gradient(135deg, #143a72 0%, #1f4f9c 55%, #2c63bf 100%);
+  background: transparent;
+  border-top-color: rgba(255, 255, 255, 0.12);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
 }
+[data-md-color-scheme="slate"] .cl-hero,
+[data-md-color-scheme="slate"] .cl-hero__content h1 {
+  color: #eee;
+}
+[data-md-color-scheme="slate"] .cl-hero .md-button--primary {
+  background: #eee;
+  color: #222;
+  border-color: #eee;
+}
+[data-md-color-scheme="slate"] .cl-hero .md-button--primary:hover {
+  background: #ccc;
+  border-color: #ccc;
+  color: #222;
+}
+[data-md-color-scheme="slate"] .cl-hero .md-button:not(.md-button--primary) {
+  color: #eee;
+  border-color: rgba(238, 238, 238, 0.6);
+}
+[data-md-color-scheme="slate"] .cl-hero .md-button:not(.md-button--primary):hover {
+  background: rgba(238, 238, 238, 0.1);
+  border-color: #eee;
+  color: #eee;
+}
+
+/* 顶部导航栏也改为白板风格 */
+.md-header {
+  background: #fff !important;
+  color: #222 !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.md-header__button.md-logo,
+.md-header__title {
+  color: #222 !important;
+}
+.md-header__inner .md-tabs {
+  background: #fff !important;
+  color: #222 !important;
+}
+.md-tabs {
+  background: #fff !important;
+  color: #222 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+.md-tabs__link {
+  color: rgba(34, 34, 34, 0.7) !important;
+}
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: #222 !important;
+}
+
+/* 搜索框和图标颜色 */
+.md-search__form,
+.md-search__input,
+.md-header__button {
+  color: #222 !important;
+}
+
+/* ---------- 暗色模式：导航栏深色 ---------- */
+[data-md-color-scheme="slate"] .md-header {
+  background: #1e1e1e !important;
+  color: #eee !important;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+[data-md-color-scheme="slate"] .md-header__title,
+[data-md-color-scheme="slate"] .md-header__button {
+  color: #eee !important;
+}
+[data-md-color-scheme="slate"] .md-tabs {
+  background: #1e1e1e !important;
+  color: #eee !important;
+  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+}
+[data-md-color-scheme="slate"] .md-tabs__link {
+  color: rgba(238, 238, 238, 0.7) !important;
+}
+[data-md-color-scheme="slate"] .md-tabs__link--active,
+[data-md-color-scheme="slate"] .md-tabs__link:hover {
+  color: #eee !important;
+}
+[data-md-color-scheme="slate"] .md-search__form,
+[data-md-color-scheme="slate"] .md-search__input,
+[data-md-color-scheme="slate"] .md-header__button {
+  color: #eee !important;
+}
+
+/* ===========================================================
+   日志列表：左侧日志名单（标题 + 简介 + 按年份分组）
+   =========================================================== */
+/* 头部（标题 + 简介）：与元信息行同款底色框条 */
+.cl-post-list__head {
+  background: rgba(0, 0, 0, 0.045);
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 1.2rem;            /* 与下方名单之间空一行 */
+}
+[data-md-color-scheme="slate"] .cl-post-list__head {
+  background: rgba(255, 255, 255, 0.07);
+}
+.cl-post-list__head .md-nav__title {
+  padding: 0;                       /* 框条内边距由 __head 统一控制 */
+}
+/* 简介文字：小字、灰色 */
+.cl-post-list__desc {
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+  margin: 0.2rem 0 0;
+}
+.cl-post-list__desc p {
+  margin: 0;
+}
+/* 年份分组标题 */
+.cl-post-list__year {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color--light);
+  padding: 0.6rem 0.6rem 0.2rem;
+  list-style: none;
+}
+
+/* ===========================================================
+   日志列表：条目之间的分割线
+   =========================================================== */
+.md-post--excerpt + .md-post--excerpt {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 2rem;
+}
+[data-md-color-scheme="slate"] .md-post--excerpt + .md-post--excerpt {
+  border-top-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 摘要底部（按钮）与下方分割线的间距：默认 3.2rem 偏大，收小一点 */
+.md-post--excerpt {
+  margin-bottom: 2.2rem;
+}
+
+/* 摘要被截断时的省略号：单独一行居中，加大加粗，颜色同「阅读全文」按钮 */
+.cl-excerpt-ellipsis {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--md-primary-fg-color);
+  /* 以正文行长为基准居中（内容栏比文字宽，直接 text-align:center 会偏右） */
+  width: 100%;
+  max-width: 19em;
+  text-align: center;
+  margin-top: 0.2rem;               /* 贴近上方正文 */
+  margin-bottom: 1.2rem;            /* 与下方按钮拉开 */
+}
+
+/* 元信息行（日期/分类）与下面日志内容的间距 */
+.md-post--excerpt .md-post__content {
+  margin-top: 1rem;
+}
+
+/* 元信息行加底色框条：浅灰底、无边框、固定等长（与省略号同一基准宽度） */
+.md-post--excerpt .md-post__header {
+  background: rgba(0, 0, 0, 0.045);
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  width: 100%;
+  max-width: 456px;                 /* 同 .cl-excerpt-ellipsis 的 19em */
+}
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__header {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* 摘要正文里的小标题用暖橙色，与蓝色日志标题、黑色正文区分 */
+.md-post--excerpt .md-post__content h2:not(:first-of-type) a.toclink,
+.md-post--excerpt .md-post__content :is(h3, h4, h5, h6) a.toclink {
+  color: #b45f06;
+}
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content h2:not(:first-of-type) a.toclink,
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content :is(h3, h4, h5, h6) a.toclink {
+  color: #e8a04c;
+}
+
+/* ===========================================================
+   日志列表：标题前的水果图案（按位置循环，伪随机）
+
+   水果 emoji 库（想增删就从这里挑，再改下面的 nth-of-type 循环）：
+   🍇 葡萄  🍈 甜瓜  🍉 西瓜  🍊 橘子  🍋 柠檬  🍌 香蕉
+   🍍 菠萝  🥭 芒果  🍎 红苹果 🍏 青苹果 🍐 梨   🍑 桃子
+   🍒 樱桃  🍓 草莓  🫐 蓝莓  🥝 猕猴桃 🥥 椰子  🥑 牛油果
+   =========================================================== */
+.md-post--excerpt .md-post__content h2::before {
+  margin-right: 0.3rem;
+}
+.md-post--excerpt:nth-of-type(18n+1)  .md-post__content h2::before { content: "🍇"; }
+.md-post--excerpt:nth-of-type(18n+2)  .md-post__content h2::before { content: "🍈"; }
+.md-post--excerpt:nth-of-type(18n+3)  .md-post__content h2::before { content: "🍉"; }
+.md-post--excerpt:nth-of-type(18n+4)  .md-post__content h2::before { content: "🍊"; }
+.md-post--excerpt:nth-of-type(18n+5)  .md-post__content h2::before { content: "🍋"; }
+.md-post--excerpt:nth-of-type(18n+6)  .md-post__content h2::before { content: "🍌"; }
+.md-post--excerpt:nth-of-type(18n+7)  .md-post__content h2::before { content: "🍍"; }
+.md-post--excerpt:nth-of-type(18n+8)  .md-post__content h2::before { content: "🥭"; }
+.md-post--excerpt:nth-of-type(18n+9)  .md-post__content h2::before { content: "🍎"; }
+.md-post--excerpt:nth-of-type(18n+10) .md-post__content h2::before { content: "🍏"; }
+.md-post--excerpt:nth-of-type(18n+11) .md-post__content h2::before { content: "🍐"; }
+.md-post--excerpt:nth-of-type(18n+12) .md-post__content h2::before { content: "🍑"; }
+.md-post--excerpt:nth-of-type(18n+13) .md-post__content h2::before { content: "🍒"; }
+.md-post--excerpt:nth-of-type(18n+14) .md-post__content h2::before { content: "🍓"; }
+.md-post--excerpt:nth-of-type(18n+15) .md-post__content h2::before { content: "🫐"; }
+.md-post--excerpt:nth-of-type(18n+16) .md-post__content h2::before { content: "🥝"; }
+.md-post--excerpt:nth-of-type(18n+17) .md-post__content h2::before { content: "🥥"; }
+.md-post--excerpt:nth-of-type(18n+18) .md-post__content h2::before { content: "🥑"; }
 
 /* ---------- 手机端缩小字号 ---------- */
 @media screen and (max-width: 600px) {

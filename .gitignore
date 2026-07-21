@@ -7,7 +7,11 @@ _tmp_*.html
 
 # 说明文件
 README.md
+AGENTS.md
 MkDocs-Material-学习笔记.md
+
+# 工作记录（与主页展示无关）
+_notes/
 
 # 图片素材
 pics/

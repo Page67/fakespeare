@@ -1,0 +1,51 @@
+{#-
+  覆盖 Material 内置 blog.html：
+  - 左侧边栏替换为日志名单：页面标题 + 简介（index.md 正文）+ 按年份分组的日志链接
+  - 主区域不再渲染页头，直接列出日志摘要
+-#}
+{% extends "main.html" %}
+{% block site_nav %}
+  <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary cl-post-list" aria-label="日志名单">
+          <div class="cl-post-list__head">
+            <div class="md-nav__title">{{ page.title }}</div>
+            <div class="cl-post-list__desc md-typeset">
+              {{ page.content }}
+            </div>
+          </div>
+          <ul class="md-nav__list">
+            {% set ns = namespace(year=None) %}
+            {% for post in posts %}
+              {% set year = post.config.date.created.year %}
+              {% if year != ns.year %}
+                {% set ns.year = year %}
+                <li class="cl-post-list__year">{{ year }}</li>
+              {% endif %}
+              <li class="md-nav__item">
+                <a href="{{ post.url | url }}" class="md-nav__link">
+                  {{ post.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block container %}
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      {% for post in posts %}
+        {% include "partials/post.html" %}
+      {% endfor %}
+      {% if pagination %}
+        {% block pagination %}
+          {% include "partials/pagination.html" %}
+        {% endblock %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
