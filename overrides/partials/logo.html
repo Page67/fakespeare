@@ -2,9 +2,12 @@
   覆盖 Material 内置 partials/logo.html：
   默认图标 material/library（圆点 + 书）的圆点加两只耳朵，改成猴子头，
   呼应站点名「无限猴子打字机」。若配置了 theme.logo 仍优先使用图片。
+  theme.logo 为亮色版；暗色版 assets/logo-dark.svg 与其同时输出，
+  由 extra.css 按 [data-md-color-scheme] 切换显示。
 -#}
 {% if config.theme.logo %}
-  <img src="{{ config.theme.logo | url }}" alt="logo">
+  <img src="{{ config.theme.logo | url }}" alt="logo" class="cl-logo--light">
+  <img src="{{ 'assets/logo-dark.svg' | url }}" alt="logo" class="cl-logo--dark">
 {% else %}
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/>

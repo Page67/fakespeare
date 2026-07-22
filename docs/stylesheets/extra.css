@@ -131,6 +131,16 @@
 }
 
 /* ---------- 暗色模式：导航栏深色 ---------- */
+/* 亮/暗 Logo 切换：默认显示亮色版，slate 下换成「只剩打字机」的暗色版 */
+.md-logo .cl-logo--dark {
+  display: none !important;
+}
+[data-md-color-scheme="slate"] .md-logo .cl-logo--light {
+  display: none !important;
+}
+[data-md-color-scheme="slate"] .md-logo .cl-logo--dark {
+  display: block !important;
+}
 [data-md-color-scheme="slate"] .md-header {
   background: #1e1e1e !important;
   color: #eee !important;

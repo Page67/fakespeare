@@ -5,6 +5,7 @@ site_author: uki
 theme:
   name: material
   language: zh
+  logo: assets/logo.svg
   custom_dir: overrides          # ← 新增：启用自定义模板目录
   palette:
     - scheme: default
@@ -33,7 +34,7 @@ plugins:
   - blog:
       blog_dir: blog
   - blog:
-      blog_dir: project
+      blog_dir: projects
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -45,4 +46,4 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - 日常记录: blog/index.md
-  - 项目讲解: project/index.md
+  - 项目讲解: projects/index.md

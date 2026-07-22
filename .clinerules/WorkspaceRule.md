@@ -7,7 +7,7 @@ MkDocs 工作日志站点：`mkdocs.yml` → `docs/` → `overrides/home.html`�
 ## 1. 图片管理（强制）
 
 - **存放位置**：每篇博文的图片必须放在该博文同目录下的 `pics/<博文文件名>/` 子文件夹中。
-  同时适用于 `docs/blog/posts/` 和 `docs/project/posts/`。
+  同时适用于 `docs/blog/posts/` 和 `docs/projects/posts/`。
 - **命名规则**：按 Markdown 中出现顺序命名为 `image-1.png`、`image-2.png`…，每个子文件夹独立编号。
 - **引用路径**：`![说明文字](pics/<博文文件名>/image-N.png)`
 - **禁止**：不要把图片直接放在 `posts/` 根目录；不要跨博文复用图片。
