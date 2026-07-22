@@ -38,6 +38,7 @@
   然后自动从所有页面中筛选带 date 元数据的文章，按日期倒序展示前 5 篇。
 -->
 {% block content %}
+  <div class="cl-home">
   {{ super() }}
 
   {% set ns = namespace(posts=[]) %}
@@ -48,6 +49,7 @@
   {% endfor %}
 
   {% if ns.posts | length %}
+  <div class="cl-recent">
   <h2>最近更新</h2>
   <ul>
     {% for post in ns.posts | sort(attribute='meta.date', reverse=true) %}
@@ -59,5 +61,7 @@
       {% endif %}
     {% endfor %}
   </ul>
+  </div>
   {% endif %}
+  </div>
 {% endblock %}

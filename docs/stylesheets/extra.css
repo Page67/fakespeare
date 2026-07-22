@@ -2,9 +2,15 @@
    首页 Hero 横幅样式
    =========================================================== */
 
+/* 页面底色：云白（白天配色卡），与 Hero 奶油底柔和衔接；slate 不受影响 */
+:root {
+  --md-default-bg-color: #FBFAFA;
+}
+
 .cl-hero {
-  /* 白板起步：无背景色/无渐变 */
-  background: transparent;
+  /* 白天版：像素海滩横幅背景（夜晚版见 slate 规则） */
+  background: #f5e9d6 url("../assets/hero/hero-light.webp") right 65% / cover no-repeat;
+  image-rendering: pixelated;     /* 像素画放大保持锐利 */
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
@@ -13,56 +19,105 @@
 }
 
 .cl-hero__inner {
-  padding: 5rem 1rem 6rem;      /* 横幅高度，想更高就调大第二个数值 */
+  padding: 4.5rem 1rem 6rem;    /* 横幅高度，想更高就调大第二个数值 */
   display: flex;
 }
 
 .cl-hero__content {
-  max-width: 42rem;             /* 文案区宽度，居中可改成 margin:0 auto + text-align:center */
+  max-width: 42rem;
+  margin-left: clamp(4%, 8vw, 18%);  /* 宽屏下弹性右移，避免中部空旷 */
 }
 
 .cl-hero__content h1 {
-  color: #222;
+  color: #4171A8;                 /* 深海蓝（白天配色卡），呼应海洋背景 */
   font-weight: 800;
-  font-size: 2.6rem;
+  font-size: 1.7rem;
   line-height: 1.25;
-  margin: 0 0 1rem;
+  margin: 0 0 0.6rem;
 }
 
 .cl-hero__content p {
-  font-size: 1.05rem;
-  opacity: 0.92;
-  margin: 0 0 2rem;
+  font-size: 0.9rem;
+  color: rgba(65, 113, 168, 0.85);
+  margin: 0 0 1.2rem;
 }
 
 /* ---------- 按钮 ---------- */
 .cl-hero .md-button {
   margin: 0.4rem 0.6rem 0 0;
   border-radius: 6px;
+  padding: 0.35em 1.1em;
+  font-size: 0.72rem;
   transition: all 0.2s ease;
 }
 
-/* 主按钮：深色底 + 白字 */
+/* 主按钮：深海蓝底 + 白字（对比度 ≥4.5:1） */
 .cl-hero .md-button--primary {
-  background: #222;
+  background: #4171A8;
   color: #fff;
-  border-color: #222;
+  border-color: #4171A8;
 }
 .cl-hero .md-button--primary:hover {
-  background: #444;
-  border-color: #444;
+  background: #35608F;
+  border-color: #35608F;
   color: #fff;
 }
 
-/* 次按钮：透明描边 */
+/* 次按钮：浅色底 + 蓝描边 */
 .cl-hero .md-button:not(.md-button--primary) {
-  color: #222;
-  border-color: rgba(34, 34, 34, 0.6);
+  color: #4171A8;
+  border-color: rgba(115, 167, 211, 0.6);
+  background: rgba(255, 255, 255, 0.55);
 }
 .cl-hero .md-button:not(.md-button--primary):hover {
-  background: rgba(34, 34, 34, 0.08);
-  border-color: #222;
-  color: #222;
+  background: rgba(115, 167, 211, 0.15);
+  border-color: #73A7D3;
+  color: #4171A8;
+}
+
+/* ===========================================================
+   首页正文 + 最近更新卡片（白天配色卡）
+   =========================================================== */
+.cl-home h1 {
+  color: #4171A8;                 /* 深海蓝 */
+}
+
+/* 最近更新：光晕噪点底 + 沙影褐描边的卡片 */
+.cl-recent {
+  background: #FDF5E9;
+  border: 1px solid rgba(194, 149, 88, 0.35);
+  border-radius: 8px;
+  padding: 1rem 1.4rem 1.1rem;
+  margin-top: 1.6rem;
+}
+.cl-recent h2 {
+  color: #4171A8;
+  margin: 0 0 0.8rem;
+  padding-left: 0.6rem;
+  border-left: 4px solid #F8CD60; /* 太阳黄左条 */
+}
+.cl-recent ul {
+  margin-bottom: 0.2rem;
+}
+.cl-recent li::marker {
+  color: #F8CD60;                 /* 太阳黄圆点 */
+}
+.cl-recent a {
+  color: #4171A8;
+}
+.cl-recent a:hover {
+  color: #2B5A8A;
+}
+[data-md-color-scheme="slate"] .cl-recent {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+[data-md-color-scheme="slate"] .cl-recent h2,
+[data-md-color-scheme="slate"] .cl-recent a {
+  color: #9EC5E4;                 /* 浪尖浅蓝 */
+}
+[data-md-color-scheme="slate"] .cl-home h1 {
+  color: #9EC5E4;
 }
 
 /* ---------- 暗色模式：保持透明背景，反转文字颜色 ---------- */
@@ -74,6 +129,9 @@
 [data-md-color-scheme="slate"] .cl-hero,
 [data-md-color-scheme="slate"] .cl-hero__content h1 {
   color: #eee;
+}
+[data-md-color-scheme="slate"] .cl-hero__content p {
+  color: rgba(238, 238, 238, 0.85);
 }
 [data-md-color-scheme="slate"] .cl-hero .md-button--primary {
   background: #eee;
@@ -95,39 +153,55 @@
   color: #eee;
 }
 
-/* 顶部导航栏也改为白板风格 */
+/* 顶部导航栏：云白底 + 深海蓝文字/图标 + 主蓝分隔线（呼应海平线） */
 .md-header {
-  background: #fff !important;
-  color: #222 !important;
+  background: #FBFAFA !important;         /* 云白 */
+  color: #4171A8 !important;              /* 深海蓝 */
   box-shadow: none !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(115, 167, 211, 0.35);
 }
 .md-header__button.md-logo,
 .md-header__title {
-  color: #222 !important;
+  color: #4171A8 !important;
 }
 .md-header__inner .md-tabs {
-  background: #fff !important;
-  color: #222 !important;
+  background: #FBFAFA !important;
+  color: #4171A8 !important;
 }
 .md-tabs {
-  background: #fff !important;
-  color: #222 !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  background: #FBFAFA !important;
+  color: #4171A8 !important;
+  border-bottom: 1px solid rgba(115, 167, 211, 0.35) !important;
 }
 .md-tabs__link {
-  color: rgba(34, 34, 34, 0.7) !important;
+  color: rgba(65, 113, 168, 0.65) !important;
 }
 .md-tabs__link--active,
 .md-tabs__link:hover {
-  color: #222 !important;
+  color: #4171A8 !important;      /* 深海蓝：激活/悬停标签 */
 }
 
 /* 搜索框和图标颜色 */
 .md-search__form,
 .md-search__input,
 .md-header__button {
-  color: #222 !important;
+  color: #4171A8 !important;
+}
+.md-header__button:not(.md-logo) {
+  color: rgba(65, 113, 168, 0.8) !important;  /* 图标稍柔和，不抢标题 */
+}
+.md-search__form {
+  background: rgba(115, 167, 211, 0.10);  /* 主蓝淡底 */
+  border-radius: 6px;
+}
+.md-search__input::placeholder {
+  color: rgba(65, 113, 168, 0.55);        /* placeholder 深海蓝半透明 */
+}
+[data-md-color-scheme="slate"] .md-search__form {
+  background: rgba(255, 255, 255, 0.07);
+}
+[data-md-color-scheme="slate"] .md-search__input::placeholder {
+  color: rgba(238, 238, 238, 0.5);
 }
 
 /* ---------- 暗色模式：导航栏深色 ---------- */
@@ -321,5 +395,7 @@
 /* ---------- 手机端缩小字号 ---------- */
 @media screen and (max-width: 600px) {
   .cl-hero__inner { padding: 3rem 1rem 3.5rem; }
-  .cl-hero__content h1 { font-size: 1.9rem; }
+  .cl-hero__content { margin-left: 0; }
+  .cl-hero__content h1 { font-size: 1.45rem; }
+  .cl-hero__content p { margin-bottom: 0.8rem; }
 }
