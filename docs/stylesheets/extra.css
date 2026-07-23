@@ -303,11 +303,17 @@
   margin-bottom: 2.2rem;
 }
 
-/* 「阅读全文」按钮：比默认 md-button 稍小一圈，字号小 2px、不加粗 */
+/* 「阅读全文」按钮：去边框，字前加 ">>>"，字号与正文一致 */
 .md-post__action .cl-readmore {
   padding: 0.3em 1.2em;
-  font-size: 0.7rem;                /* 正文 0.8rem 小 2px */
+  font-size: 0.8rem;                /* 正文同号，比默认 0.8rem 自然大 2px（原 0.7rem + 2） */
   font-weight: 400;
+  border: none;
+  box-shadow: none;
+}
+.md-post__action .cl-readmore::before {
+  content: ">>> ";
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; /* 等宽，前缀对齐 */
 }
 
 /* 摘要被截断时的省略号：单独一行居中，加大加粗，颜色同「阅读全文」按钮 */
@@ -422,4 +428,15 @@
   .cl-hero__content { margin-left: 0; }
   .cl-hero__content h1 { font-size: 1.45rem; }
   .cl-hero__content p { margin-bottom: 0.8rem; }
+}
+
+/* ===========================================================
+   正文图片：淡灰色细边框，区分图片与正文
+   =========================================================== */
+.md-typeset img {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+[data-md-color-scheme="slate"] .md-typeset img {
+  border-color: rgba(255, 255, 255, 0.15);
 }
