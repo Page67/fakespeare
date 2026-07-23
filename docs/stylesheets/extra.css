@@ -392,6 +392,30 @@
   font-weight: 700;
 }
 
+/* ===========================================================
+   「回到页面顶部」按钮：固定在右下角，左缘与右侧栏「目录」标题对齐
+   - 「目录」文字 = 侧栏左缘 + 0.8rem（0.2rem 内边距 + 0.6rem 标题 padding）
+     侧栏宽 12.1rem，贴 .md-grid 容器（max-width:61rem）右缘，
+     由此推出左缘 = min(100% - 11.3rem, 50% + 19.2rem)
+   - margin-left 和 top 必须加 !important：
+     margin-left 要压过 [dir=ltr] .md-top 的 50%（优先级更高）；
+     top 要压过 Material JS 写入的内联 style.top，否则与 bottom
+     同时生效，按钮会被纵向拉伸
+   =========================================================== */
+.md-top {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  left: min(calc(100% - 11.3rem), calc(50% + 19.2rem));
+  right: auto;
+  top: auto !important;
+  bottom: 1.2rem;
+  transform: none;
+}
+/* 隐藏态的位移动画保持垂直方向（默认的 -50% 水平偏移已不再需要） */
+.md-top[hidden] {
+  transform: translateY(0.2rem);
+}
+
 /* ---------- 手机端缩小字号 ---------- */
 @media screen and (max-width: 600px) {
   .cl-hero__inner { padding: 3rem 1rem 3.5rem; }
