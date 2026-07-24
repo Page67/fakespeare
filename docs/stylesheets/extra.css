@@ -125,9 +125,12 @@
   color: #9EC5E4;
 }
 
-/* ---------- 暗色模式：保持透明背景，反转文字颜色 ---------- */
+/* ---------- 暗色模式：像素海滩夜景横幅 ---------- */
 [data-md-color-scheme="slate"] .cl-hero {
-  background: transparent;
+  /* 夜景图已左右延伸（gen_hero_banners.py，与白天同法），
+     定位参数与白天一致：cover 竖向几乎零裁切，小岛位置与白天基本对齐；
+     底色取海面深色，极窄屏时向下衔接 */
+  background: #101C31 url("../assets/hero/hero-dark.webp") right 65% / cover no-repeat;
   border-top-color: rgba(255, 255, 255, 0.12);
   border-bottom-color: rgba(255, 255, 255, 0.12);
 }
