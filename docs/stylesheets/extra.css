@@ -1,3 +1,7 @@
+/* 思源黑体 webfont（标题用）：本机未安装的访客从 Google Fonts 加载 700/800 字重，
+   已安装的访客由下方 font-family 栈优先命中本机字体 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700;800&display=swap");
+
 /* ===========================================================
    首页 Hero 横幅样式
    =========================================================== */

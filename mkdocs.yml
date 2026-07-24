@@ -1,11 +1,15 @@
 site_name: 无限猴子打字机
 site_description: 编程项目记录与技术分享
 site_author: uki
+site_url: https://page67.github.io/fakespeare/   # GitHub Pages 地址（sitemap/规范链接用）
+repo_url: https://github.com/Page67/fakespeare   # 页眉右上角仓库链接
+edit_uri: edit/main/docs/                        # 正文页「编辑此页」铅笔链接
 
 theme:
   name: material
   language: zh
   logo: assets/logo.svg
+  favicon: assets/favicon.png    # 由 logo.svg 导出的 64px PNG（_notes 脚本/CairoSVG 生成）
   custom_dir: overrides          # ← 新增：启用自定义模板目录
   palette:
     - scheme: default

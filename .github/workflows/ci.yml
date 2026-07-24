@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - master
+  workflow_dispatch:            # 允许手动触发重新部署
 permissions:
   contents: write
 jobs:
@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # hooks.py 需完整 git 历史取各页最后提交日期
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: pip install mkdocs-material
+      - run: pip install mkdocs-material jieba   # jieba：中文搜索分词
       - run: mkdocs gh-deploy --force
