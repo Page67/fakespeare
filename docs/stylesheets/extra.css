@@ -16,11 +16,109 @@
 
   color: #333;
   margin-top: -0.4rem;          /* 让横幅紧贴上方导航栏，不留缝 */
+  position: relative;           /* 波光粒子（.cl-hero__sparkles）定位基准 */
 }
 
 .cl-hero__inner {
   padding: 4.5rem 1rem 6rem;    /* 横幅高度，想更高就调大第二个数值 */
   display: flex;
+  position: relative;           /* 文字/按钮保持在波光粒子上方 */
+  z-index: 1;
+}
+
+/* ===========================================================
+   首页 Hero：海面波光粒子
+   粒子元素由 docs/javascripts/hero-particles.js 随机生成，
+   这里只负责外观与闪烁动画
+   =========================================================== */
+.cl-hero__sparkles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;             /* 粒子漂出横幅时裁掉 */
+  pointer-events: none;         /* 不挡文字选择与按钮点击 */
+}
+.cl-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 4px 1px rgba(158, 197, 228, 0.8);   /* 浪尖浅蓝光晕 */
+  opacity: 0;                   /* 由动画淡入，避免生成瞬间全亮 */
+  animation: cl-sparkle 4s ease-in-out infinite;
+}
+/* 夜晚版：月光奶油色波光（配色卡月光黄 200） */
+[data-md-color-scheme="slate"] .cl-sparkle {
+  background: rgba(250, 229, 184, 0.95);
+  box-shadow: 0 0 5px 1px rgba(250, 229, 184, 0.6);
+}
+@keyframes cl-sparkle {
+  0%, 100% { opacity: 0;   transform: translateY(0)     scale(0.6); }
+  50%      { opacity: 0.9; transform: translateY(-5px)  scale(1); }
+}
+/* 系统开启「减少动态效果」时停用动画（JS 侧也会跳过生成，双保险） */
+@media (prefers-reduced-motion: reduce) {
+  .cl-sparkle {
+    animation: none;
+  }
+}
+
+/* ===========================================================
+   首页彩蛋：打字机字母砸香蕉树
+   元素由 docs/javascripts/hero-letters.js 生成，rAF 驱动飞行，
+   这里负责外观与撞击/坠蕉动画。一律 position: fixed（视口坐标）
+   =========================================================== */
+.cl-letter,
+.cl-letter-hit,
+.cl-banana {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;                   /* 盖过导航栏与 Hero，飞行全程可见 */
+  pointer-events: none;
+  margin: 0;
+  line-height: 1;
+  will-change: transform;
+}
+
+/* 飞行字母：等宽粗体小字，打字机油墨感 */
+.cl-letter {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: #1D3C5C;                 /* 描边深蓝（白天配色卡） */
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);   /* 掠过海面时保持可读 */
+}
+/* 夜晚不发射新字母（JS 侧拦截）；以下 slate 规则只为切换瞬间
+   尚在空中的残余字母/闪光/香蕉提供正确的夜间配色 */
+[data-md-color-scheme="slate"] .cl-letter {
+  color: #FAE5B8;                 /* 月光奶油 */
+  text-shadow: 0 0 3px rgba(16, 28, 49, 0.9);
+}
+
+/* 撞击闪光：✦ 放大旋转淡出（定位用 left/top，transform 让给动画） */
+.cl-letter-hit {
+  font-size: 0.8rem;
+  color: #F8CD60;                 /* 太阳黄 */
+  text-shadow: 0 0 4px rgba(248, 205, 96, 0.9);
+  animation: cl-letter-hit 0.4s ease-out forwards;
+}
+[data-md-color-scheme="slate"] .cl-letter-hit {
+  color: #FAE5B8;                 /* 月光奶油 */
+  text-shadow: 0 0 4px rgba(250, 229, 184, 0.9);
+}
+@keyframes cl-letter-hit {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6) rotate(90deg); }
+}
+
+/* 砸落的香蕉：坠入海面并淡出（--cl-fall 由 JS 按到海面距离设定） */
+.cl-banana {
+  font-size: 0.8rem;
+  animation: cl-banana-fall 1.1s cubic-bezier(0.5, 0, 1, 0.6) forwards;  /* 加速下坠 */
+}
+@keyframes cl-banana-fall {
+  0%   { opacity: 1; transform: translate(-50%, -50%) rotate(0deg); }
+  75%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) translateY(var(--cl-fall)) rotate(300deg); }
 }
 
 .cl-hero__content {

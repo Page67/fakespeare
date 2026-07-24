@@ -29,6 +29,10 @@ theme:
 extra_css:                       # ← 新增：加载首页样式
   - stylesheets/extra.css
 
+extra_javascript:                # ← 首页动效：海面波光粒子 + 字母砸香蕉树（仅首页生效）
+  - javascripts/hero-particles.js
+  - javascripts/hero-letters.js
+
 hooks:                           # ← 新增：构建时为每页注入最后修改时间（meta.mtime）
   - hooks.py
 
