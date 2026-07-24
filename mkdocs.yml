@@ -34,6 +34,8 @@ hooks:                           # ← 新增：构建时为每页注入最后�
 
 plugins:
   - search
+  - tags:
+      tags_file: tags.md          # 标签索引页（自动生成 /tags/）
   - blog:
       blog_dir: blog
   - blog:
