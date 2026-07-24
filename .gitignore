@@ -14,7 +14,5 @@ MkDocs-Material-学习笔记.md
 # 工作记录（与主页展示无关）
 _notes/
 
-# 图片素材
-pics/
-docs/projects/**/pics/
-docs/blog/**/pics/
+# 图片素材（仅根目录截图素材；博文配图 docs/**/pics/ 需随站发布，已改为入库）
+/pics/
