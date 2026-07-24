@@ -1,80 +1,676 @@
+/* 思源黑体 webfont（标题用）：本机未安装的访客从 Google Fonts 加载 700/800 字重，
+   已安装的访客由下方 font-family 栈优先命中本机字体 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700;800&display=swap");
+
 /* ===========================================================
    首页 Hero 横幅样式
    =========================================================== */
 
+/* 页面底色：纯白（白天配色方案），与云白导航栏形成微差；slate 不受影响 */
+:root {
+  --md-default-bg-color: #FFFFFF;
+}
+
 .cl-hero {
-  /* 默认：蓝色渐变背景（贴合你的 primary: blue 主题） */
-  background: linear-gradient(135deg, #2a6df4 0%, #4d8bff 55%, #7aa9ff 100%);
+  /* 白天版：像素海滩横幅背景（夜晚版见 slate 规则） */
+  background: #f5e9d6 url("../assets/hero/hero-light.webp") right 65% / cover no-repeat;
+  image-rendering: pixelated;     /* 像素画放大保持锐利 */
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
-  /* ⭐ 想要图2那种「整张大背景插画」时：
-     1) 把一张图片放到 docs/assets/hero.png
-     2) 注释掉上面那行 background，启用下面这行 */
-  /* background: url("../assets/hero.png") center / cover no-repeat; */
-
-  color: #fff;
+  color: #333;
   margin-top: -0.4rem;          /* 让横幅紧贴上方导航栏，不留缝 */
+  position: relative;           /* 波光粒子（.cl-hero__sparkles）定位基准 */
 }
 
 .cl-hero__inner {
-  padding: 5rem 1rem 6rem;      /* 横幅高度，想更高就调大第二个数值 */
+  padding: 4.5rem 1rem 6rem;    /* 横幅高度，想更高就调大第二个数值 */
   display: flex;
+  position: relative;           /* 文字/按钮保持在波光粒子上方 */
+  z-index: 1;
+}
+
+/* ===========================================================
+   首页 Hero：海面波光粒子
+   粒子元素由 docs/javascripts/hero-particles.js 随机生成，
+   这里只负责外观与闪烁动画
+   =========================================================== */
+.cl-hero__sparkles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;             /* 粒子漂出横幅时裁掉 */
+  pointer-events: none;         /* 不挡文字选择与按钮点击 */
+}
+.cl-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 4px 1px rgba(158, 197, 228, 0.8);   /* 浪尖浅蓝光晕 */
+  opacity: 0;                   /* 由动画淡入，避免生成瞬间全亮 */
+  animation: cl-sparkle 4s ease-in-out infinite;
+}
+/* 夜晚版：月光奶油色波光（配色卡月光黄 200） */
+[data-md-color-scheme="slate"] .cl-sparkle {
+  background: rgba(250, 229, 184, 0.95);
+  box-shadow: 0 0 5px 1px rgba(250, 229, 184, 0.6);
+}
+@keyframes cl-sparkle {
+  0%, 100% { opacity: 0;   transform: translateY(0)     scale(0.6); }
+  50%      { opacity: 0.9; transform: translateY(-5px)  scale(1); }
+}
+/* 系统开启「减少动态效果」时停用动画（JS 侧也会跳过生成，双保险） */
+@media (prefers-reduced-motion: reduce) {
+  .cl-sparkle {
+    animation: none;
+  }
+}
+
+/* ===========================================================
+   首页彩蛋：打字机字母砸香蕉树
+   元素由 docs/javascripts/hero-letters.js 生成，rAF 驱动飞行，
+   这里负责外观与撞击/坠蕉动画。一律 position: fixed（视口坐标）
+   =========================================================== */
+.cl-letter,
+.cl-letter-hit,
+.cl-banana {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;                   /* 盖过导航栏与 Hero，飞行全程可见 */
+  pointer-events: none;
+  margin: 0;
+  line-height: 1;
+  will-change: transform;
+}
+
+/* 飞行字母：等宽粗体小字，打字机油墨感 */
+.cl-letter {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: #1D3C5C;                 /* 描边深蓝（白天配色卡） */
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);   /* 掠过海面时保持可读 */
+}
+/* 夜晚不发射新字母（JS 侧拦截）；以下 slate 规则只为切换瞬间
+   尚在空中的残余字母/闪光/香蕉提供正确的夜间配色 */
+[data-md-color-scheme="slate"] .cl-letter {
+  color: #FAE5B8;                 /* 月光奶油 */
+  text-shadow: 0 0 3px rgba(16, 28, 49, 0.9);
+}
+
+/* 撞击闪光：✦ 放大旋转淡出（定位用 left/top，transform 让给动画） */
+.cl-letter-hit {
+  font-size: 0.8rem;
+  color: #F8CD60;                 /* 太阳黄 */
+  text-shadow: 0 0 4px rgba(248, 205, 96, 0.9);
+  animation: cl-letter-hit 0.4s ease-out forwards;
+}
+[data-md-color-scheme="slate"] .cl-letter-hit {
+  color: #FAE5B8;                 /* 月光奶油 */
+  text-shadow: 0 0 4px rgba(250, 229, 184, 0.9);
+}
+@keyframes cl-letter-hit {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6) rotate(90deg); }
+}
+
+/* 砸落的香蕉：坠入海面并淡出（--cl-fall 由 JS 按到海面距离设定） */
+.cl-banana {
+  font-size: 0.8rem;
+  animation: cl-banana-fall 1.1s cubic-bezier(0.5, 0, 1, 0.6) forwards;  /* 加速下坠 */
+}
+@keyframes cl-banana-fall {
+  0%   { opacity: 1; transform: translate(-50%, -50%) rotate(0deg); }
+  75%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) translateY(var(--cl-fall)) rotate(300deg); }
 }
 
 .cl-hero__content {
-  max-width: 42rem;             /* 文案区宽度，居中可改成 margin:0 auto + text-align:center */
+  max-width: 42rem;
+  margin-left: clamp(4%, 8vw, 18%);  /* 宽屏下弹性右移，避免中部空旷 */
 }
 
 .cl-hero__content h1 {
-  color: #fff;
+  color: #4171A8;                 /* 深海蓝（白天配色卡），呼应海洋背景 */
   font-weight: 800;
-  font-size: 2.6rem;
+  font-size: 1.7rem;
   line-height: 1.25;
-  margin: 0 0 1rem;
+  margin: 0 0 0.6rem;
 }
 
 .cl-hero__content p {
-  font-size: 1.05rem;
-  opacity: 0.92;
-  margin: 0 0 2rem;
+  font-size: 0.9rem;
+  color: #222;                    /* 标题灰：副标题 */
+  margin: 0 0 1.2rem;
 }
 
-/* ---------- 按钮 ---------- */
+/* ---------- 按钮：直角细线边框 + 右下硬阴影（像素风立体感） ---------- */
 .cl-hero .md-button {
   margin: 0.4rem 0.6rem 0 0;
-  border-radius: 6px;
+  border-radius: 0;
+  border-width: 1.5px;              /* 细线边框（Material 默认 2px 偏粗） */
+  padding: 0.35em 1.1em;
+  font-size: 0.72rem;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease;
 }
 
-/* 主按钮：白底 + 主题色字 */
+/* 主按钮：深海蓝底 + 描边深蓝边框 + 白字（对比度 ≥4.5:1） */
 .cl-hero .md-button--primary {
-  background: #fff;
-  color: #2a6df4;
-  border-color: #fff;
+  background: #4171A8;
+  color: #fff;
+  border-color: #1D3C5C;
 }
 .cl-hero .md-button--primary:hover {
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(255, 255, 255, 0.88);
-  color: #2a6df4;
+  background: #35608F;
+  border-color: #1D3C5C;
+  color: #fff;
 }
 
-/* 次按钮：透明描边 */
+/* 次按钮：浅色底 + 浪尖浅蓝描边 + 正文灰文字 */
 .cl-hero .md-button:not(.md-button--primary) {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.75);
+  color: #333;
+  border-color: #9EC5E4;
+  background: rgba(255, 255, 255, 0.72);
 }
 .cl-hero .md-button:not(.md-button--primary):hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(158, 197, 228, 0.18);
+  border-color: #73A7D3;
+  color: #222;
+}
+
+/* ===========================================================
+   首页正文 + 最近更新卡片（白天配色卡）
+   =========================================================== */
+.cl-home {
+  margin-left: 1.5rem;              /* 板块整体稍向右移 */
+}
+.cl-home h1 {
+  color: #B49B7D;                 /* 沙褐：欢迎标题，呼应 Logo */
+  font-size: 1.8em;               /* 比 Material h1 默认（2em）略小 */
+}
+
+/* 最近更新：雾蓝底卡片（方案无描边），太阳黄左条/圆点 */
+.cl-recent {
+  background: #E2EDF3;
+  border-radius: 8px;
+  padding: 1rem 1.4rem 1.1rem;
+  margin-top: 1.6rem;
+}
+.cl-recent h2 {
+  color: #73A7D3;                 /* 海面主蓝：卡片标题 */
+  margin: 0 0 0.8rem;
+  padding-left: 0.6rem;
+  border-left: 4px solid #F8CD60; /* 太阳黄左条 */
+}
+.cl-recent ul {
+  margin-bottom: 0.2rem;
+}
+.cl-recent li::marker {
+  color: #F8CD60;                 /* 太阳黄圆点 */
+}
+.cl-recent a {
+  color: #1D3C5C;                    /* 描边深蓝：列表标题（短横线左侧） */
+}
+.cl-recent a:hover {
+  color: #4171A8;                 /* 深海蓝：悬停提亮 */
+}
+[data-md-color-scheme="slate"] .cl-recent {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+[data-md-color-scheme="slate"] .cl-recent h2 {
+  color: #A4BED3;                     /* 雾蓝灰：卡片标题 */
+  border-left-color: #FAE5B8;         /* 月光奶油左条（替代太阳黄） */
+}
+[data-md-color-scheme="slate"] .cl-recent li {
+  color: #868D9A;                     /* 岩灰：日期与链接统一 */
+}
+[data-md-color-scheme="slate"] .cl-recent li::marker {
+  color: #FAE5B8;                     /* 月光奶油圆点（同左条） */
+}
+[data-md-color-scheme="slate"] .cl-recent__date {
+  color: #fff;                        /* 纯白：短横线 + 日期 */
+}
+[data-md-color-scheme="slate"] .cl-recent a {
+  color: #868D9A;
+}
+[data-md-color-scheme="slate"] .cl-recent a:hover {
+  color: #A4BED3;                     /* 雾蓝灰：悬停提亮 */
+}
+[data-md-color-scheme="slate"] .cl-home h1 {
+  color: #A4BED3;                     /* 雾蓝灰：欢迎标题（同「最近更新」标题） */
+}
+
+/* ---------- 暗色模式：像素海滩夜景横幅 ---------- */
+[data-md-color-scheme="slate"] .cl-hero {
+  /* 夜景图已左右延伸（gen_hero_banners.py，与白天同法），
+     定位参数与白天一致：cover 竖向几乎零裁切，小岛位置与白天基本对齐；
+     底色取海面深色，极窄屏时向下衔接 */
+  background: #101C31 url("../assets/hero/hero-dark.webp") right 65% / cover no-repeat;
+  border-top-color: rgba(255, 255, 255, 0.12);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+[data-md-color-scheme="slate"] .cl-hero {
+  color: #fff;
+}
+[data-md-color-scheme="slate"] .cl-hero__content h1 {
+  color: #E9D5B4;                 /* 奶油黄：Hero 标题（月光色系） */
+}
+[data-md-color-scheme="slate"] .cl-hero__content p {
+  color: #fff;                    /* 副标题近白 */
+}
+[data-md-color-scheme="slate"] .cl-hero .md-button--primary {
+  background: #fff;
+  color: #222;
+  border-color: #fff;
+}
+[data-md-color-scheme="slate"] .cl-hero .md-button--primary:hover {
+  background: #ccc;
+  border-color: #ccc;
+  color: #222;
+}
+[data-md-color-scheme="slate"] .cl-hero .md-button:not(.md-button--primary) {
+  color: #fff;                        /* 纯白文字 */
+  background: #29374C;                /* 深海灰蓝底色（夜海蓝 700） */
+  border-color: rgba(238, 238, 238, 0.6);
+}
+[data-md-color-scheme="slate"] .cl-hero .md-button:not(.md-button--primary):hover {
+  background: #3E4B5E;                /* 白 10% 叠加在 #29374C 上的合成色 */
   border-color: #fff;
   color: #fff;
 }
 
-/* ---------- 暗色模式：换一套更深的蓝 ---------- */
-[data-md-color-scheme="slate"] .cl-hero {
-  background: linear-gradient(135deg, #143a72 0%, #1f4f9c 55%, #2c63bf 100%);
+/* 顶部导航栏：顶栏暖白实色 + 深棕榈绿标题/图标 + 细灰分隔线 */
+.md-header {
+  background: #FEF8F0 !important;         /* 顶栏暖白（光晕噪点 30% 透明合成值） */
+  color: #45643B !important;              /* 深棕榈绿 */
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.md-header__button.md-logo,
+.md-header__title {
+  color: #45643B !important;              /* 深棕榈绿：站点标题 */
+}
+.md-header__title {
+  margin-left: 0.8rem !important;         /* 左移与下方「日常记录」标签左对齐 */
+}
+.md-header__inner .md-tabs {
+  background: #F8F0E2 !important;         /* 标签栏暖沙（天空米白 30% 透明合成值） */
+  color: #45643B !important;
+}
+.md-tabs {
+  background: #F8F0E2 !important;
+  color: #45643B !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+.md-tabs__link {
+  color: #595959 !important;              /* 标签灰：未激活标签 */
+}
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: #222 !important;                 /* 标题灰：激活/悬停标签 */
+}
+
+/* 搜索框：白底 + 细线灰描边，输入文字正文灰 */
+.md-search__form,
+.md-search__input,
+.md-header__button {
+  color: #333 !important;
+}
+.md-header__button:not(.md-logo) {
+  color: rgba(34, 34, 34, 0.5) !important;  /* 图标中性灰，不抢标题 */
+}
+/* 模式切换图标：白天太阳黄；slate 下由后面的月光奶油规则覆盖 */
+[data-md-component="palette"] .md-header__button {
+  color: #F8CD60 !important;
+}
+.md-search__form {
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;            /* 细线灰描边 */
+  border-radius: 6px;
+  position: relative;
+}
+/* 框内左侧放大镜图标（SVG mask，颜色随沙褐占位文字） */
+.md-search__form::before {
+  content: "";
+  position: absolute;
+  left: 0.45rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.75rem;
+  height: 0.75rem;
+  background: #B49B7D;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  pointer-events: none;
+}
+.md-search__form .md-search__input {
+  padding-left: 1.45rem !important;     /* 给放大镜腾位 */
+}
+/* 桌面端展开态：搜索框限宽为页面 1/3；隐藏 Material 自带图标（与 ::before 重复） */
+@media screen and (min-width: 60em) {
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__form,
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
+    width: 40vw;
+  }
+  .md-search__icon {
+    display: none;
+  }
+}
+/* 手机端：自带图标作返回按钮，隐藏 ::before 避免重叠 */
+@media screen and (max-width: 59.99em) {
+  .md-search__form::before {
+    display: none;
+  }
+}
+.md-search__input::placeholder {
+  color: #c9beb1;                       /* 沙褐 */
+}
+[data-md-color-scheme="slate"] .md-search__form {
+  background: rgba(255, 255, 255, 0.07);
+  border: none;
+}
+[data-md-color-scheme="slate"] .md-search__form::before {
+  background: rgba(238, 238, 238, 0.5);
+}
+[data-md-color-scheme="slate"] .md-search__input::placeholder {
+  color: rgba(238, 238, 238, 0.5);
+}
+
+/* ---------- 暗色模式：导航栏深色 ---------- */
+/* 亮/暗 Logo 切换：默认显示亮色版，slate 下换成「只剩打字机」的暗色版 */
+.md-logo .cl-logo--dark {
+  display: none !important;
+}
+[data-md-color-scheme="slate"] .md-logo .cl-logo--light {
+  display: none !important;
+}
+[data-md-color-scheme="slate"] .md-logo .cl-logo--dark {
+  display: block !important;
+}
+[data-md-color-scheme="slate"] .md-header {
+  background: #1e1e1e !important;
+  color: #eee !important;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+[data-md-color-scheme="slate"] .md-header__title {
+  color: #A4BED3 !important;            /* 雾蓝灰：站点标题 */
+}
+[data-md-color-scheme="slate"] .md-header__button {
+  color: #eee !important;
+}
+/* 模式切换（月亮）图标：月光奶油（优先级高于上方 #eee 规则） */
+[data-md-color-scheme="slate"] [data-md-component="palette"] .md-header__button {
+  color: #FFF7DC !important;
+}
+[data-md-color-scheme="slate"] .md-tabs {
+  background: #1e1e1e !important;
+  color: #eee !important;
+  border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+}
+[data-md-color-scheme="slate"] .md-tabs__link {
+  color: rgba(238, 238, 238, 0.55) !important;   /* 未激活标签：月白 55% */
+}
+[data-md-color-scheme="slate"] .md-tabs__link--active,
+[data-md-color-scheme="slate"] .md-tabs__link:hover {
+  color: #fff !important;
+}
+[data-md-color-scheme="slate"] .md-search__form,
+[data-md-color-scheme="slate"] .md-search__input,
+[data-md-color-scheme="slate"] .md-header__button {
+  color: #eee !important;
+}
+
+/* ===========================================================
+   日志列表：左侧日志名单（标题 + 简介 + 按年份分组）
+   =========================================================== */
+/* 头部（标题 + 简介）：与元信息行同款底色框条 */
+.cl-post-list__head {
+  background: rgba(0, 0, 0, 0.045);
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 2.4rem;            /* 进一步加大与下方名单的间距 */
+}
+[data-md-color-scheme="slate"] .cl-post-list__head {
+  background: rgba(255, 255, 255, 0.07);
+}
+.cl-post-list__head .md-nav__title {
+  padding: 0;                       /* 框条内边距由 __head 统一控制 */
+  color: #B49B7D;                   /* 沙褐：名单标题 */
+}
+.cl-post-list__head .md-nav__title .md-nav__link {
+  color: #B49B7D;
+}
+/* 简介文字：小字、灰色 */
+.cl-post-list__desc {
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+  margin: 0.5rem 0 0;
+}
+.cl-post-list__desc p {
+  margin: 0;
+}
+/* 列表头部与下方第一项保持安全间距，防止简介阴影框压住后续文字 */
+.cl-post-list .md-nav__list {
+  margin-top: 1.0rem;
+}
+/* 年份分组标题 */
+.cl-post-list__year {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #5A8CBE;                   /* 灰蓝 */
+  padding: 0.6rem 0.6rem 0.2rem;
+  list-style: none;
+}
+/* slate：名单标题雾蓝灰、年份月光奶油 */
+[data-md-color-scheme="slate"] .cl-post-list__head .md-nav__title,
+[data-md-color-scheme="slate"] .cl-post-list__head .md-nav__title .md-nav__link {
+  color: #A4BED3;                   /* 雾蓝灰：名单标题 */
+}
+[data-md-color-scheme="slate"] .cl-post-list__year {
+  color: #FAE5B8;                   /* 月光奶油：年份分组标题 */
+}
+/* 名单条目：标题前加小提示符，方便区分 */
+.cl-post-list .md-nav__link::before {
+  content: "›";
+  margin-right: 0.3rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* ===========================================================
+   日志列表：条目之间的分割线
+   =========================================================== */
+/* 分割线用伪元素绘制，比条目内容宽 2rem，避免和文字尾端齐平 */
+.md-post--excerpt + .md-post--excerpt::before {
+  content: "";
+  display: block;
+  width: calc(100% + 2rem);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.0rem;              /* 分割线与下一条元信息的间距 */
+}
+[data-md-color-scheme="slate"] .md-post--excerpt + .md-post--excerpt::before {
+  border-top-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 摘要底部（按钮）与下方分割线的间距 */
+.md-post--excerpt {
+  margin-bottom: 0.8rem;
+}
+
+/* 「阅读全文」按钮：去边框，字前加 ">>>"，字号与正文一致 */
+.md-post__action .cl-readmore {
+  padding: 0.3em 1.2em;
+  font-size: 0.8rem;                /* 正文同号，比默认 0.8rem 自然大 2px（原 0.7rem + 2） */
+  font-weight: 400;
+  border: none;
+  box-shadow: none;
+}
+.md-post__action .cl-readmore::before {
+  content: ">>> ";
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; /* 等宽，前缀对齐 */
+}
+/* 夜晚模式：阅读全文使用链接蓝 300 */
+[data-md-color-scheme="slate"] .md-post__action .cl-readmore {
+  color: #79BFF8;
+}
+
+/* 摘要被截断时的省略号：单独一行居中，加大加粗，颜色同「阅读全文」按钮 */
+.cl-excerpt-ellipsis {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.0rem;
+  color: var(--md-primary-fg-color);
+  /* 以正文行长为基准居中（内容栏比文字宽，直接 text-align:center 会偏右） */
+  width: 100%;
+  max-width: 19em;
+  text-align: center;
+  margin-top: 0.2rem;               /* 贴近上方正文 */
+  margin-bottom: 0.6rem;            /* 与下方按钮拉开 */
+}
+/* 夜晚模式：省略号使用链接蓝 300 */
+[data-md-color-scheme="slate"] .cl-excerpt-ellipsis {
+  color: #79BFF8;
+}
+
+/* 元信息行（日期/分类）与下面日志内容的间距 */
+.md-post--excerpt .md-post__content {
+  margin-top: 1rem;
+}
+
+/* 元信息行加底色框条：浅灰底、无边框、固定等长（与省略号同一基准宽度） */
+.md-post--excerpt .md-post__header {
+  background: rgba(0, 0, 0, 0.045);
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  width: 100%;
+  max-width: 456px;                 /* 同 .cl-excerpt-ellipsis 的 19em */
+}
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__header {
+  background: rgba(255, 255, 255, 0.07);
+}
+/* 夜晚模式：元信息行中的分类链接（如“环境搭建”）使用链接蓝 300 */
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__header .md-meta__link {
+  color: #79BFF8;
+}
+
+/* 日志详情页：文章主标题深海蓝（摘要标题为 h2，不受此规则影响） */
+.md-content--post .md-typeset > h1 {
+  color: #4171A8;
+}
+/* 夜晚模式：详情页主标题奶油黄，副标题云灰 */
+[data-md-color-scheme="slate"] .md-content--post .md-typeset > h1 {
+  color: #E9D5B4;                         /* 奶油黄 300 */
+}
+[data-md-color-scheme="slate"] .md-content--post .md-typeset > :is(h2, h3, h4, h5, h6) {
+  color: #CCCCCC;                         /* 云灰 200 */
+}
+
+/* 摘要：文章标题海面主蓝，小标题描边深蓝（区分黑色正文） */
+.md-post--excerpt .md-post__content h2:first-of-type a.toclink {
+  color: #4171A8;                         /* 海面主蓝：文章标题 */
+}
+.md-post--excerpt .md-post__content h2:not(:first-of-type) a.toclink,
+.md-post--excerpt .md-post__content :is(h3, h4, h5, h6) a.toclink {
+  color: #1D3C5C;                         /* 描边深蓝：小标题 */
+}
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content h2:not(:first-of-type) a.toclink,
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content :is(h3, h4, h5, h6) a.toclink {
+  color: #CCCCCC;                         /* 云灰 200：副标题 */
+}
+/* slate：主标题奶油黄，摘要正文纯白 */
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content h2:first-of-type a.toclink {
+  color: #E9D5B4;                         /* 奶油黄：文章主标题 */
+}
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content > p {
+  color: #ffffff;                         /* 纯白：摘要正文 */
+}
+/* 夜晚模式：摘要正文中的普通链接（如“环境搭建”）使用链接蓝 300；标题锚点因选择器更具体而不受影响 */
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content a {
+  color: #79BFF8;
+}
+
+/* ===========================================================
+   日志列表：标题前的水果图案（按位置循环，伪随机）
+
+   水果 emoji 库（想增删就从这里挑，再改下面的 nth-of-type 循环）：
+   🍇 葡萄  🍈 甜瓜  🍉 西瓜  🍊 橘子  🍋 柠檬  🍌 香蕉
+   🍍 菠萝  🥭 芒果  🍎 红苹果 🍏 青苹果 🍐 梨   🍑 桃子
+   🍒 樱桃  🍓 草莓  🫐 蓝莓  🥝 猕猴桃 🥥 椰子  🥑 牛油果
+   =========================================================== */
+.md-post--excerpt .md-post__content h2::before {
+  margin-right: 0.3rem;
+}
+.md-post--excerpt:nth-of-type(18n+1)  .md-post__content h2::before { content: "🍇"; }
+.md-post--excerpt:nth-of-type(18n+2)  .md-post__content h2::before { content: "🍈"; }
+.md-post--excerpt:nth-of-type(18n+3)  .md-post__content h2::before { content: "🍉"; }
+.md-post--excerpt:nth-of-type(18n+4)  .md-post__content h2::before { content: "🍊"; }
+.md-post--excerpt:nth-of-type(18n+5)  .md-post__content h2::before { content: "🍋"; }
+.md-post--excerpt:nth-of-type(18n+6)  .md-post__content h2::before { content: "🍌"; }
+.md-post--excerpt:nth-of-type(18n+7)  .md-post__content h2::before { content: "🍍"; }
+.md-post--excerpt:nth-of-type(18n+8)  .md-post__content h2::before { content: "🥭"; }
+.md-post--excerpt:nth-of-type(18n+9)  .md-post__content h2::before { content: "🍎"; }
+.md-post--excerpt:nth-of-type(18n+10) .md-post__content h2::before { content: "🍏"; }
+.md-post--excerpt:nth-of-type(18n+11) .md-post__content h2::before { content: "🍐"; }
+.md-post--excerpt:nth-of-type(18n+12) .md-post__content h2::before { content: "🍑"; }
+.md-post--excerpt:nth-of-type(18n+13) .md-post__content h2::before { content: "🍒"; }
+.md-post--excerpt:nth-of-type(18n+14) .md-post__content h2::before { content: "🍓"; }
+.md-post--excerpt:nth-of-type(18n+15) .md-post__content h2::before { content: "🫐"; }
+.md-post--excerpt:nth-of-type(18n+16) .md-post__content h2::before { content: "🥝"; }
+.md-post--excerpt:nth-of-type(18n+17) .md-post__content h2::before { content: "🥥"; }
+.md-post--excerpt:nth-of-type(18n+18) .md-post__content h2::before { content: "🥑"; }
+
+/* ===========================================================
+   标题字体：思源黑体（Noto Sans SC，本机已装可变字体版）
+   未安装的访客回落到原字体栈
+   =========================================================== */
+.md-typeset :is(h1, h2, h3, h4, h5, h6) {
+  font-family: "Noto Sans SC", "Source Han Sans SC", "Source Han Sans CN", "思源黑体",
+    Roboto, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+/* ===========================================================
+   「回到页面顶部」按钮：固定在右下角，左缘与右侧栏「目录」标题对齐
+   - 「目录」文字 = 侧栏左缘 + 0.8rem（0.2rem 内边距 + 0.6rem 标题 padding）
+     侧栏宽 12.1rem，贴 .md-grid 容器（max-width:61rem）右缘，
+     由此推出左缘 = min(100% - 11.3rem, 50% + 19.2rem)
+   - margin-left 和 top 必须加 !important：
+     margin-left 要压过 [dir=ltr] .md-top 的 50%（优先级更高）；
+     top 要压过 Material JS 写入的内联 style.top，否则与 bottom
+     同时生效，按钮会被纵向拉伸
+   =========================================================== */
+.md-top {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  left: min(calc(100% - 11.3rem), calc(50% + 19.2rem));
+  right: auto;
+  top: auto !important;
+  bottom: 1.2rem;
+  transform: none;
+}
+/* 隐藏态的位移动画保持垂直方向（默认的 -50% 水平偏移已不再需要） */
+.md-top[hidden] {
+  transform: translateY(0.2rem);
 }
 
 /* ---------- 手机端缩小字号 ---------- */
 @media screen and (max-width: 600px) {
   .cl-hero__inner { padding: 3rem 1rem 3.5rem; }
-  .cl-hero__content h1 { font-size: 1.9rem; }
+  .cl-hero__content { margin-left: 0; }
+  .cl-hero__content h1 { font-size: 1.45rem; }
+  .cl-hero__content p { margin-bottom: 0.8rem; }
+}
+
+/* ===========================================================
+   正文图片：淡灰色细边框，区分图片与正文
+   =========================================================== */
+.md-typeset img {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+[data-md-color-scheme="slate"] .md-typeset img {
+  border-color: rgba(255, 255, 255, 0.15);
 }

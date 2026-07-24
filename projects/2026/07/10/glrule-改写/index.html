@@ -12,24 +12,28 @@
         <meta name="author" content="uki">
       
       
+        <link rel="canonical" href="https://page67.github.io/fakespeare/projects/2026/07/10/glrule-%E6%94%B9%E5%86%99/">
       
       
-        <link rel="next" href="../../10/glrule-%E6%94%B9%E5%86%99/">
+        <link rel="prev" href="../../09/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B%E7%9A%84%E7%AE%80%E4%BB%8B/">
+      
+      
+        <link rel="next" href="../../11/%E5%AE%98%E6%96%B9%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E5%8E%BF%E8%A1%8C%E6%94%BF%E8%BE%B9%E7%95%8C%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E5%A4%84%E7%90%86/">
       
       
         
       
       
-      <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <link rel="icon" href="../../../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>项目简介的简介 - 无限猴子打字机</title>
+        <title>GLRule 改写 - 无限猴子打字机</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -78,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#agent-global-rules" class="md-skip">
           跳转至
         </a>
       
@@ -94,8 +98,8 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../../../.." title="无限猴子打字机" class="md-header__button md-logo" aria-label="无限猴子打字机" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../../../../assets/logo.svg" alt="logo" class="cl-logo--light">
+  <img src="../../../../../assets/logo-dark.svg" alt="logo" class="cl-logo--dark">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -112,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              项目简介的简介
+              GLRule 改写
             
           </span>
         </div>
@@ -138,7 +142,7 @@
     <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="亮色模式"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="亮色模式" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
       </label>
     
   
@@ -193,6 +197,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/Page67/fakespeare" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -238,7 +254,7 @@
   
     
   
-  工作日志
+  日常记录
 
       </a>
     </li>
@@ -292,12 +308,24 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../../../.." title="无限猴子打字机" class="md-nav__button md-logo" aria-label="无限猴子打字机" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../../../../../assets/logo.svg" alt="logo" class="cl-logo--light">
+  <img src="../../../../../assets/logo-dark.svg" alt="logo" class="cl-logo--dark">
 
     </a>
     无限猴子打字机
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Page67/fakespeare" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -344,7 +372,7 @@
   <span class="md-ellipsis">
     
   
-    工作日志
+    日常记录
   
 
     
@@ -417,54 +445,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前情提要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主要内容
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        时间线
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        工作方式
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#agent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Agent 选取
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        技术栈
+        改写结果
       
     </span>
   </a>
@@ -508,7 +503,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2026-07-09 00:00:00+00:00" class="md-ellipsis">2026年7月9日</time>
+                        <time datetime="2026-07-10 00:00:00+00:00" class="md-ellipsis">2026年7月10日</time>
                       </div>
                     </li>
                     
@@ -530,7 +525,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              需要 1 分钟阅读时间
+                              需要 2 分钟阅读时间
                             
                           </span>
                         </div>
@@ -552,176 +547,74 @@
   
 
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../../../tags/#tag:agent" class="md-tag">Agent</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../../../tags/#tag:histmap" class="md-tag">histmap</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../../../tags/#tag:projects" class="md-tag">projects</a>
+      
+    
+  </nav>
 
 
-<h1 id="_1">项目简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">主要内容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>中国历史文化遗产线上地图项目。<strong>开源。数据集开放下载。</strong></p>
-<h2 id="_3">时间线<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+  
+  
+
+
+<h1 id="agent-global-rules">Agent Global Rules 改写<a class="headerlink" href="#agent-global-rules" title="Permanent link">&para;</a></h1>
+<h2 id="_1">前情提要<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>背景</p>
+<p>使用Agent辅助编程进行项目开发时，撰写 Global Rules（全局规则） 和 Project Rules（项目规则） 供给AI参考，可以更有效地推进项目顺利进行。</p>
+<!-- more -->
+</li>
+<li>
+<p>初次交流</p>
+<p>作者在项目开发中途先手写了一版规则，然后让AI结合26年初很有名的Andrej Karpathy给出的AI编程建议对该规则进行修改完善。AI第一次为我生成了3个全局规则文件和6个项目规则文件……考虑到规则文件是Agent要频繁默认读取的，沟通后最终形成3个全局规则和2个项目规则文件。</p>
+<p><img alt="和柴鸡的对话1" src="pics/2026-07-10-glrulerewrite/image-1.png" />
+<img alt="和柴鸡的对话2-Karpathy" src="pics/2026-07-10-glrulerewrite/image-4.png" />
+<img alt="柴鸡GLRules建议" src="pics/2026-07-10-glrulerewrite/image-2.png" />
+<img alt="柴鸡PJRules建议" src="pics/2026-07-10-glrulerewrite/image-3.png" />
+<img alt="和柴鸡的对话3-简化规则文件" src="pics/2026-07-10-glrulerewrite/image-5.png" /></p>
+</li>
+<li>
+<p>存疑</p>
+<p>经过一段时间的开发后，尤其是观察Agent的具体思考过程后，作者发现若干问题，比如：</p>
 <ul>
-<li>项目创建时间（以首个 commit 为准）：2026-03-30 10:06:14 +0800</li>
-<li>首个 commit：b1a49a7 | Page67 | init: project structure</li>
-<li>经历了v0.1尝试版、v0.2更新版到目前v1.0第一版</li>
-<li>目前处于v1.0第一版最后收尾阶段</li>
+<li>重复做Plan</li>
+<li>Rule里有一些属于Skills、workflow或其他具体操作范畴的内容</li>
+<li>长期会遗忘</li>
+<li>3个全局规则文件稍显冗余</li>
 </ul>
-<h2 id="_4">工作方式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+</li>
+</ol>
+<p>遂改之。</p>
+<h2 id="_2">改写结果<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>改写后变为一个简短文件。重点包括：</p>
 <ul>
-<li>AI辅助编程（因为作者编程水平只有Python101入门级别）</li>
-<li>平均每天两小时</li>
+<li>英文操作，中文回答。</li>
+<li>Clarify before implementation.</li>
+<li>Plan -&gt; Act -&gt; Verify 工作节奏</li>
+<li>未经允许不要随意更改文件和系统设置</li>
+<li>多Agent不要同时修改同一个文件夹/文件。</li>
 </ul>
-<h2 id="agent">Agent 选取<a class="headerlink" href="#agent" title="Permanent link">&para;</a></h2>
-<p>作为第一个项目，选择<strong>Cline</strong>这个经典的VSCode内置型Agent。</p>
-<h2 id="_5">技术栈<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>技术领域</th>
-<th style="text-align: right;">项目是否涉及</th>
-<th style="text-align: right;">覆盖程度</th>
-<th style="text-align: center;">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>前端 Web</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>TypeScript / JS 工程</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">中高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>互动地图</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>GIS 桌面处理</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>空间数据格式</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>空间数据库</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">中高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>后端 API</td>
-<td style="text-align: right;">已开始/规划</td>
-<td style="text-align: right;">中</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>地图服务 / OGC</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">中高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>云存储 / 静态资产</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">中高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>服务器部署</td>
-<td style="text-align: right;">已开始</td>
-<td style="text-align: right;">中</td>
-<td style="text-align: center;">仍需进一步学习</td>
-</tr>
-<tr>
-<td>Git / 版本管理</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">中</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>Python 数据脚本</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">中高</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>AI agent 开发流</td>
-<td style="text-align: right;">已涉及</td>
-<td style="text-align: right;">中</td>
-<td style="text-align: center;">√</td>
-</tr>
-<tr>
-<td>==测试体系==</td>
-<td style="text-align: right;">较少</td>
-<td style="text-align: right;">低</td>
-<td style="text-align: center;">中后期</td>
-</tr>
-<tr>
-<td><strong>CI/CD</strong>(Continuous Integration &amp; Continuous Delivery/Deployment)</td>
-<td style="text-align: right;">基本未涉及</td>
-<td style="text-align: right;">低</td>
-<td style="text-align: center;">后期&amp;正式发布前</td>
-</tr>
-<tr>
-<td><strong>权限 / 用户系统</strong></td>
-<td style="text-align: right;">基本未涉及</td>
-<td style="text-align: right;">低</td>
-<td style="text-align: center;">最后测试功能和v2.0版本</td>
-</tr>
-<tr>
-<td><em>可观测性 / 日志监控</em></td>
-<td style="text-align: right;">基本未涉及</td>
-<td style="text-align: right;">低</td>
-<td style="text-align: center;">网站正式运行后会有轻微接触</td>
-</tr>
-<tr>
-<td><strong>容器化 / Docker</strong></td>
-<td style="text-align: right;">准备/了解中</td>
-<td style="text-align: right;">低到中</td>
-<td style="text-align: center;">中后期</td>
-</tr>
-<tr>
-<td>~~Kubernetes / 大规模运维~~</td>
-<td style="text-align: right;">未涉及</td>
-<td style="text-align: right;">无</td>
-<td style="text-align: center;"><strong>老六阶段唯一不需要真正接触的功能</strong></td>
-</tr>
-<tr>
-<td><strong>移动端 App</strong></td>
-<td style="text-align: right;">未涉及</td>
-<td style="text-align: right;">无</td>
-<td style="text-align: center;">项目2解决</td>
-</tr>
-<tr>
-<td><strong>桌面端 App</strong></td>
-<td style="text-align: right;">未涉及</td>
-<td style="text-align: right;">无</td>
-<td style="text-align: center;">项目2解决</td>
-</tr>
-<tr>
-<td>==游戏 / 3D 引擎==</td>
-<td style="text-align: right;">未涉及</td>
-<td style="text-align: right;">无</td>
-<td style="text-align: center;">项目6、项目5解决</td>
-</tr>
-<tr>
-<td>==机器学习训练平台==</td>
-<td style="text-align: right;">未正式涉及</td>
-<td style="text-align: right;">低</td>
-<td style="text-align: center;">老六的open tail，新项目的预热</td>
-</tr>
-</tbody>
-</table>
 
 
 
@@ -785,7 +678,11 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../../../javascripts/hero-particles.js"></script>
+      
+        <script src="../../../../../javascripts/hero-letters.js"></script>
       
     
   </body>

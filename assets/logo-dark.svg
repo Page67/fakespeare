@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 暗色模式：猴子下班了，只剩打字机（整体提亮 + 垂直居中） -->
+  <rect x="12" y="22" width="40" height="6" rx="3" fill="#7a7a7a"/>
+  <circle cx="12" cy="25" r="4" fill="#5a5a5a"/>
+  <circle cx="52" cy="25" r="4" fill="#5a5a5a"/>
+  <path d="M13 28 h38 l5 15 h-48 z" fill="#8a8a8a"/>
+  <circle cx="17" cy="35.5" r="2.6" fill="#f0f0f0"/>
+  <circle cx="26" cy="35.5" r="2.6" fill="#f0f0f0"/>
+  <circle cx="35" cy="35.5" r="2.6" fill="#f0f0f0"/>
+  <circle cx="44" cy="35.5" r="2.6" fill="#f0f0f0"/>
+  <circle cx="21.5" cy="40.5" r="2.2" fill="#d9d9d9"/>
+  <circle cx="30.5" cy="40.5" r="2.2" fill="#d9d9d9"/>
+  <circle cx="39.5" cy="40.5" r="2.2" fill="#d9d9d9"/>
+</svg>
