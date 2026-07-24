@@ -18,7 +18,7 @@ theme:
       primary: blue
       accent: blue
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-night
         name: 亮色模式
   features:
     - navigation.tabs
@@ -28,6 +28,9 @@ theme:
 
 extra_css:                       # ← 新增：加载首页样式
   - stylesheets/extra.css
+
+hooks:                           # ← 新增：构建时为每页注入最后修改时间（meta.mtime）
+  - hooks.py
 
 plugins:
   - search

@@ -15,28 +15,29 @@ tags:
 
 1. 背景
 
-使用Agent辅助编程进行项目开发时，撰写 Global Rules（全局规则） 和 Project Rules（项目规则） 供给AI参考，可以更有效地推进项目顺利进行。
+    使用Agent辅助编程进行项目开发时，撰写 Global Rules（全局规则） 和 Project Rules（项目规则） 供给AI参考，可以更有效地推进项目顺利进行。
 
-<!-- more -->
+    <!-- more -->
+
 
 2. 初次交流
 
-作者在项目开发中途先手写了一版规则，然后让AI结合26年初很有名的Andrej Karpathy给出的AI编程建议对该规则进行修改完善。AI第一次为我生成了3个全局规则文件和6个项目规则文件……考虑到规则文件是Agent要频繁默认读取的，沟通后最终形成3个全局规则和2个项目规则文件。
+    作者在项目开发中途先手写了一版规则，然后让AI结合26年初很有名的Andrej Karpathy给出的AI编程建议对该规则进行修改完善。AI第一次为我生成了3个全局规则文件和6个项目规则文件……考虑到规则文件是Agent要频繁默认读取的，沟通后最终形成3个全局规则和2个项目规则文件。
 
-![和柴鸡的对话1](pics/2026-07-10-glrulerewrite/image-1.png)
-![和柴鸡的对话2-Karpathy](pics/2026-07-10-glrulerewrite/image-4.png)
-![柴鸡GLRules建议](pics/2026-07-10-glrulerewrite/image-2.png)
-![柴鸡PJRules建议](pics/2026-07-10-glrulerewrite/image-3.png)
-![和柴鸡的对话3-简化规则文件](pics/2026-07-10-glrulerewrite/image-5.png)
+    ![和柴鸡的对话1](pics/2026-07-10-glrulerewrite/image-1.png)
+    ![和柴鸡的对话2-Karpathy](pics/2026-07-10-glrulerewrite/image-4.png)
+    ![柴鸡GLRules建议](pics/2026-07-10-glrulerewrite/image-2.png)
+    ![柴鸡PJRules建议](pics/2026-07-10-glrulerewrite/image-3.png)
+    ![和柴鸡的对话3-简化规则文件](pics/2026-07-10-glrulerewrite/image-5.png)
 
 3. 存疑
 
-经过一段时间的开发后，尤其是观察Agent的具体思考过程后，作者发现若干问题，比如：
+    经过一段时间的开发后，尤其是观察Agent的具体思考过程后，作者发现若干问题，比如：
 
-- 重复做Plan
-- Rule里有一些属于Skills、workflow或其他具体操作范畴的内容
-- 长期会遗忘
-- 3个全局规则文件稍显冗余
+      - 重复做Plan
+      - Rule里有一些属于Skills、workflow或其他具体操作范畴的内容
+      - 长期会遗忘
+      - 3个全局规则文件稍显冗余
 
 遂改之。
 

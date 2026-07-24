@@ -117,12 +117,27 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
-[data-md-color-scheme="slate"] .cl-recent h2,
+[data-md-color-scheme="slate"] .cl-recent h2 {
+  color: #A4BED3;                     /* 雾蓝灰：卡片标题 */
+  border-left-color: #FAE5B8;         /* 月光奶油左条（替代太阳黄） */
+}
+[data-md-color-scheme="slate"] .cl-recent li {
+  color: #868D9A;                     /* 岩灰：日期与链接统一 */
+}
+[data-md-color-scheme="slate"] .cl-recent li::marker {
+  color: #FAE5B8;                     /* 月光奶油圆点（同左条） */
+}
+[data-md-color-scheme="slate"] .cl-recent__date {
+  color: #fff;                        /* 纯白：短横线 + 日期 */
+}
 [data-md-color-scheme="slate"] .cl-recent a {
-  color: #9EC5E4;                 /* 浪尖浅蓝 */
+  color: #868D9A;
+}
+[data-md-color-scheme="slate"] .cl-recent a:hover {
+  color: #A4BED3;                     /* 雾蓝灰：悬停提亮 */
 }
 [data-md-color-scheme="slate"] .cl-home h1 {
-  color: #9EC5E4;
+  color: #A4BED3;                     /* 雾蓝灰：欢迎标题（同「最近更新」标题） */
 }
 
 /* ---------- 暗色模式：像素海滩夜景横幅 ---------- */
@@ -134,17 +149,19 @@
   border-top-color: rgba(255, 255, 255, 0.12);
   border-bottom-color: rgba(255, 255, 255, 0.12);
 }
-[data-md-color-scheme="slate"] .cl-hero,
+[data-md-color-scheme="slate"] .cl-hero {
+  color: #fff;
+}
 [data-md-color-scheme="slate"] .cl-hero__content h1 {
-  color: #eee;
+  color: #E9D5B4;                 /* 奶油黄：Hero 标题（月光色系） */
 }
 [data-md-color-scheme="slate"] .cl-hero__content p {
-  color: rgba(238, 238, 238, 0.85);
+  color: #fff;                    /* 副标题近白 */
 }
 [data-md-color-scheme="slate"] .cl-hero .md-button--primary {
-  background: #eee;
+  background: #fff;
   color: #222;
-  border-color: #eee;
+  border-color: #fff;
 }
 [data-md-color-scheme="slate"] .cl-hero .md-button--primary:hover {
   background: #ccc;
@@ -152,13 +169,14 @@
   color: #222;
 }
 [data-md-color-scheme="slate"] .cl-hero .md-button:not(.md-button--primary) {
-  color: #eee;
+  color: #fff;                        /* 纯白文字 */
+  background: #29374C;                /* 深海灰蓝底色（夜海蓝 700） */
   border-color: rgba(238, 238, 238, 0.6);
 }
 [data-md-color-scheme="slate"] .cl-hero .md-button:not(.md-button--primary):hover {
-  background: rgba(238, 238, 238, 0.1);
-  border-color: #eee;
-  color: #eee;
+  background: #3E4B5E;                /* 白 10% 叠加在 #29374C 上的合成色 */
+  border-color: #fff;
+  color: #fff;
 }
 
 /* 顶部导航栏：顶栏暖白实色 + 深棕榈绿标题/图标 + 细灰分隔线 */
@@ -201,7 +219,7 @@
 .md-header__button:not(.md-logo) {
   color: rgba(34, 34, 34, 0.5) !important;  /* 图标中性灰，不抢标题 */
 }
-/* 模式切换（太阳）图标用太阳黄；slate 下由后面的 #eee 规则覆盖 */
+/* 模式切换图标：白天太阳黄；slate 下由后面的月光奶油规则覆盖 */
 [data-md-component="palette"] .md-header__button {
   color: #F8CD60 !important;
 }
@@ -274,9 +292,15 @@
   color: #eee !important;
   border-bottom-color: rgba(255, 255, 255, 0.12);
 }
-[data-md-color-scheme="slate"] .md-header__title,
+[data-md-color-scheme="slate"] .md-header__title {
+  color: #A4BED3 !important;            /* 雾蓝灰：站点标题 */
+}
 [data-md-color-scheme="slate"] .md-header__button {
   color: #eee !important;
+}
+/* 模式切换（月亮）图标：月光奶油（优先级高于上方 #eee 规则） */
+[data-md-color-scheme="slate"] [data-md-component="palette"] .md-header__button {
+  color: #FFF7DC !important;
 }
 [data-md-color-scheme="slate"] .md-tabs {
   background: #1e1e1e !important;
@@ -284,11 +308,11 @@
   border-bottom-color: rgba(255, 255, 255, 0.12) !important;
 }
 [data-md-color-scheme="slate"] .md-tabs__link {
-  color: rgba(238, 238, 238, 0.7) !important;
+  color: rgba(238, 238, 238, 0.55) !important;   /* 未激活标签：月白 55% */
 }
 [data-md-color-scheme="slate"] .md-tabs__link--active,
 [data-md-color-scheme="slate"] .md-tabs__link:hover {
-  color: #eee !important;
+  color: #fff !important;
 }
 [data-md-color-scheme="slate"] .md-search__form,
 [data-md-color-scheme="slate"] .md-search__input,
@@ -305,7 +329,7 @@
   border: none;
   border-radius: 4px;
   padding: 0.4rem 0.6rem;
-  margin-bottom: 1.2rem;            /* 与下方名单之间空一行 */
+  margin-bottom: 2.4rem;            /* 进一步加大与下方名单的间距 */
 }
 [data-md-color-scheme="slate"] .cl-post-list__head {
   background: rgba(255, 255, 255, 0.07);
@@ -321,10 +345,14 @@
 .cl-post-list__desc {
   font-size: 0.7rem;
   color: var(--md-default-fg-color--light);
-  margin: 0.2rem 0 0;
+  margin: 0.5rem 0 0;
 }
 .cl-post-list__desc p {
   margin: 0;
+}
+/* 列表头部与下方第一项保持安全间距，防止简介阴影框压住后续文字 */
+.cl-post-list .md-nav__list {
+  margin-top: 1.0rem;
 }
 /* 年份分组标题 */
 .cl-post-list__year {
@@ -333,6 +361,14 @@
   color: #5A8CBE;                   /* 灰蓝 */
   padding: 0.6rem 0.6rem 0.2rem;
   list-style: none;
+}
+/* slate：名单标题雾蓝灰、年份月光奶油 */
+[data-md-color-scheme="slate"] .cl-post-list__head .md-nav__title,
+[data-md-color-scheme="slate"] .cl-post-list__head .md-nav__title .md-nav__link {
+  color: #A4BED3;                   /* 雾蓝灰：名单标题 */
+}
+[data-md-color-scheme="slate"] .cl-post-list__year {
+  color: #FAE5B8;                   /* 月光奶油：年份分组标题 */
 }
 /* 名单条目：标题前加小提示符，方便区分 */
 .cl-post-list .md-nav__link::before {
@@ -373,6 +409,10 @@
   content: ">>> ";
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; /* 等宽，前缀对齐 */
 }
+/* 夜晚模式：阅读全文使用链接蓝 300 */
+[data-md-color-scheme="slate"] .md-post__action .cl-readmore {
+  color: #79BFF8;
+}
 
 /* 摘要被截断时的省略号：单独一行居中，加大加粗，颜色同「阅读全文」按钮 */
 .cl-excerpt-ellipsis {
@@ -386,6 +426,10 @@
   text-align: center;
   margin-top: 0.2rem;               /* 贴近上方正文 */
   margin-bottom: 0.6rem;            /* 与下方按钮拉开 */
+}
+/* 夜晚模式：省略号使用链接蓝 300 */
+[data-md-color-scheme="slate"] .cl-excerpt-ellipsis {
+  color: #79BFF8;
 }
 
 /* 元信息行（日期/分类）与下面日志内容的间距 */
@@ -405,10 +449,21 @@
 [data-md-color-scheme="slate"] .md-post--excerpt .md-post__header {
   background: rgba(255, 255, 255, 0.07);
 }
+/* 夜晚模式：元信息行中的分类链接（如“环境搭建”）使用链接蓝 300 */
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__header .md-meta__link {
+  color: #79BFF8;
+}
 
 /* 日志详情页：文章主标题深海蓝（摘要标题为 h2，不受此规则影响） */
 .md-content--post .md-typeset > h1 {
   color: #4171A8;
+}
+/* 夜晚模式：详情页主标题奶油黄，副标题云灰 */
+[data-md-color-scheme="slate"] .md-content--post .md-typeset > h1 {
+  color: #E9D5B4;                         /* 奶油黄 300 */
+}
+[data-md-color-scheme="slate"] .md-content--post .md-typeset > :is(h2, h3, h4, h5, h6) {
+  color: #CCCCCC;                         /* 云灰 200 */
 }
 
 /* 摘要：文章标题海面主蓝，小标题描边深蓝（区分黑色正文） */
@@ -421,7 +476,18 @@
 }
 [data-md-color-scheme="slate"] .md-post--excerpt .md-post__content h2:not(:first-of-type) a.toclink,
 [data-md-color-scheme="slate"] .md-post--excerpt .md-post__content :is(h3, h4, h5, h6) a.toclink {
-  color: #e8a04c;
+  color: #CCCCCC;                         /* 云灰 200：副标题 */
+}
+/* slate：主标题奶油黄，摘要正文纯白 */
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content h2:first-of-type a.toclink {
+  color: #E9D5B4;                         /* 奶油黄：文章主标题 */
+}
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content > p {
+  color: #ffffff;                         /* 纯白：摘要正文 */
+}
+/* 夜晚模式：摘要正文中的普通链接（如“环境搭建”）使用链接蓝 300；标题锚点因选择器更具体而不受影响 */
+[data-md-color-scheme="slate"] .md-post--excerpt .md-post__content a {
+  color: #79BFF8;
 }
 
 /* ===========================================================
