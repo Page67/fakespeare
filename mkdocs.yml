@@ -2,8 +2,6 @@ site_name: 无限猴子打字机
 site_description: 编程项目记录与技术分享
 site_author: uki
 site_url: https://page67.github.io/fakespeare/   # GitHub Pages 地址（sitemap/规范链接用）
-repo_url: https://github.com/Page67/fakespeare   # 页眉右上角仓库链接
-edit_uri: edit/main/docs/                        # 正文页「编辑此页」铅笔链接
 
 theme:
   name: material
@@ -42,8 +40,7 @@ hooks:                           # ← 新增：构建时为每页注入最后�
 
 plugins:
   - search
-  - tags:
-      tags_file: tags.md          # 标签索引页（自动生成 /tags/）
+  - tags:                       # 标签索引页（自动生成 /tags/）
   - blog:
       blog_dir: blog
   - blog:
@@ -60,3 +57,4 @@ nav:
   - 首页: index.md
   - 日常记录: blog/index.md
   - 项目讲解: projects/index.md
+  - 标签索引: tags.md

@@ -16,5 +16,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: pip install mkdocs-material jieba   # jieba：中文搜索分词
+      - run: pip install "setuptools<81" mkdocs-material jieba   # jieba：中文搜索分词
       - run: mkdocs gh-deploy --force
