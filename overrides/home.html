@@ -57,7 +57,9 @@
       {% if loop.index <= 5 %}
       <li>
         <a href="{{ post.url | url }}">{{ post.title }}</a>
-        <span class="cl-recent__date">— {{ post.meta.mtime }}</span>
+        {% set publish_date = post.meta.date %}
+        {% set update_date = post.meta.mtime or post.meta.date %}
+        <span class="cl-recent__date">-- {{ publish_date }}<span class="cl-recent__updated">（更新于 {{ update_date }}）</span></span>
       </li>
       {% endif %}
     {% endfor %}
