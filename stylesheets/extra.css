@@ -215,6 +215,9 @@
 .cl-recent a:hover {
   color: #4171A8;                 /* 深海蓝：悬停提亮 */
 }
+.cl-recent__updated {
+  color: #6B7280;                 /* 灰色：仅「更新于」信息弱化显示 */
+}
 [data-md-color-scheme="slate"] .cl-recent {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -231,6 +234,9 @@
 }
 [data-md-color-scheme="slate"] .cl-recent__date {
   color: #fff;                        /* 纯白：短横线 + 日期 */
+}
+[data-md-color-scheme="slate"] .cl-recent__updated {
+  color: #B0B7C3;                     /* 灰色：暗色模式下保持可读 */
 }
 [data-md-color-scheme="slate"] .cl-recent a {
   color: #868D9A;
